@@ -41,13 +41,13 @@ for d in demos:
     g = g.replace('<head>', '<head>\n' + guard, 1)
     open(game_path, 'w', encoding='utf-8').write(g)
 
-    cards.append(f"""  <a class="card" href="{slug}/" style="--c:{html.escape(vals['COLOR'])}">
-    <span class="tag"><i></i>{html.escape(d['cliente'])}</span>
-    <h2>{html.escape(d['titulo'])}</h2>
-    <div class="ev">{html.escape(d.get('evento',''))}</div>
-    <p>{html.escape(d.get('descripcion',''))}</p>
-    <span class="cta">Probar demo →</span>
-    {'<span class="lock">🔒 Requiere clave de acceso</span>' if d.get('clave') else ''}
+    cards.append(f"""  <a class="item" href="{slug}/" style="--c:{html.escape(vals['COLOR'])}">
+    <div>
+      <div class="c"><i></i>{html.escape(d['cliente'])}{' · 🔒' if d.get('clave') else ''}</div>
+      <h2>{html.escape(d['titulo'])}</h2>
+      <div class="ev">{html.escape(d.get('evento',''))}</div>
+    </div>
+    <span class="go">Ver demo</span>
   </a>""")
 
 if not cards:

@@ -2,78 +2,68 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0B0F10">
 <meta name="robots" content="noindex">
-<title>{{CLIENTE}} · Probador de juegos · Digital Sign RD</title>
+<title>{{CLIENTE}} · Demo · Digital Sign RD</title>
 <style>
-:root{--bg:#0F1512;--panel:#161F1A;--txt:#F2F5F3;--mut:#9AA89F;--acc:{{COLOR}};--line:#263129}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
-a{color:inherit}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
-.marca{font-weight:800;letter-spacing:.18em;font-size:13px;text-transform:uppercase;color:var(--mut)}
-.marca b{color:var(--txt)}
-.marca a{text-decoration:none}
-.cli{font-size:15px;color:var(--mut)}
-.cli b{color:var(--txt);font-weight:600}
-main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;padding:32px 28px;max-width:1240px;margin:0 auto;align-items:start}
-.escenario{display:flex;justify-content:center}
-/* Marco de tótem 9:16 */
-.totem{position:relative;width:min(100%, calc((100vh - 140px) * 9 / 16));aspect-ratio:9/16;background:#000;border-radius:22px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 0 2px #2a2a2a}
-.totem::after{content:"";position:absolute;left:50%;bottom:-18px;width:38%;height:18px;background:#111;border-radius:0 0 12px 12px;transform:translateX(-50%)}
-.totem iframe{width:100%;height:100%;border:0;border-radius:10px;background:#F3F8F4;display:block}
-aside{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
-aside h1{margin:0 0 6px;font-size:22px;line-height:1.2}
-aside .ev{color:var(--acc);filter:brightness(1.6);font-weight:600;font-size:14px;margin-bottom:14px}
-aside p{color:var(--mut);font-size:15px;line-height:1.5;margin:0 0 18px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:#1E2A23;color:var(--txt);font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;margin-bottom:10px}
-.btn.pri{background:var(--txt);color:#0F1512;border-color:transparent}
-.nota{font-size:13px;color:var(--mut);line-height:1.5;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-/* Gate de clave */
-#gate{position:fixed;inset:0;background:rgba(15,21,18,.96);display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
+html,body{margin:0;height:100%;background:#0B0F10;color:#E8ECEA;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;overflow:hidden}
+a{color:inherit;text-decoration:none}
+#escena{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px 18px}
+/* Tótem */
+.totem{position:relative;height:min(calc(100vh - 110px), 1100px);aspect-ratio:9/16;background:#0A0A0A;border-radius:18px;padding:12px;box-shadow:0 0 0 1px #2a2f2d,0 40px 100px rgba(0,0,0,.75),inset 0 0 0 1px #000}
+.totem iframe{width:100%;height:100%;border:0;border-radius:8px;background:#F3F8F4;display:block}
+.base{width:34%;height:14px;background:linear-gradient(#141817,#0A0A0A);border-radius:0 0 10px 10px;box-shadow:0 0 0 1px #2a2f2d}
+.pie{width:52%;height:6px;background:#0d100f;border-radius:4px;margin-top:2px;box-shadow:0 0 0 1px #22272593}
+/* Marca */
+#marca{position:fixed;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6B766F}
+#marca b{color:#C9D1CC;font-weight:600}
+#marca a:hover{color:#E8ECEA}
+#acciones{position:fixed;top:14px;right:16px;display:flex;gap:8px}
+#acciones a,#acciones button{font:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9AA59E;background:transparent;border:1px solid #242927;border-radius:999px;padding:8px 14px;cursor:pointer}
+#acciones a:hover,#acciones button:hover{color:#E8ECEA;border-color:#3a4441}
+/* Gate */
+#gate{position:fixed;inset:0;background:#0B0F10;display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
 #gate.on{display:flex}
-#gate form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px;max-width:380px;width:100%}
-#gate h2{margin:0 0 8px;font-size:20px}
-#gate p{color:var(--mut);margin:0 0 18px;font-size:14px}
-#gate input{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:#0F1512;color:var(--txt);font-size:18px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+#gate form{max-width:340px;width:100%;text-align:center}
+#gate .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6B766F;margin-bottom:28px}
+#gate .k b{color:#C9D1CC;font-weight:600}
+#gate h2{margin:0 0 6px;font-size:22px;font-weight:600}
+#gate p{color:#8A958E;margin:0 0 22px;font-size:14px}
+#gate input{width:100%;padding:14px;border-radius:12px;border:1px solid #242927;background:#0F1514;color:#E8ECEA;font-size:18px;letter-spacing:.2em;text-align:center;text-transform:uppercase;margin-bottom:12px;outline:none}
+#gate input:focus{border-color:#4a5753}
 #gate .err{color:#F28B82;font-size:13px;min-height:18px;margin-bottom:8px}
-@media (max-width:900px){
-  main{grid-template-columns:1fr;padding:20px 16px}
-  .totem{width:min(100%, calc((100vh - 220px) * 9 / 16));margin:0 auto}
-  aside{order:-1}
+#gate button{width:100%;padding:14px;border-radius:12px;border:0;background:#E8ECEA;color:#0B0F10;font-weight:600;font-size:15px;cursor:pointer}
+/* Celular: juego directo a pantalla completa */
+@media (max-width:700px){
+  #escena{padding:0}
+  .totem{height:100%;width:100%;aspect-ratio:auto;border-radius:0;padding:0;box-shadow:none}
+  .totem iframe{border-radius:0}
+  .base,.pie,#marca{display:none}
+  #acciones{top:auto;bottom:10px;right:10px}
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="marca"><a href="../">Digital Sign RD · <b>Probador de juegos</b></a></div>
-  <div class="cli">Demo para <b>{{CLIENTE}}</b></div>
-</header>
-<main>
-  <div class="escenario">
-    <div class="totem"><iframe id="juego" title="{{TITULO}}" allow="fullscreen"></iframe></div>
-  </div>
-  <aside>
-    <h1>{{TITULO}}</h1>
-    <div class="ev">{{EVENTO}}</div>
-    <p>{{DESCRIPCION}}</p>
-    <a class="btn pri" id="abrir" href="../juegos/{{SLUG}}/" target="_blank" rel="noopener">Abrir a pantalla completa ↗</a>
-    <button class="btn" id="reiniciar" type="button">Reiniciar demo</button>
-    <div class="nota">
-      Esta es una versión de prueba: los datos que ingrese no se guardan ni se envían a ninguna base de datos.
-      La pantalla simula un tótem vertical de 1080 × 1920 px; en el equipo real todo se ve a tamaño completo y se controla por toque.
-      <br><br>¿Comentarios o cambios? Escríbanos a <a href="mailto:digitalsignrd@gmail.com">digitalsignrd@gmail.com</a>.
-    </div>
-  </aside>
-</main>
+<div id="escena">
+  <div class="totem"><iframe id="juego" title="{{TITULO}}"></iframe></div>
+  <div class="base"></div><div class="pie"></div>
+</div>
+<div id="acciones">
+  <button id="reiniciar" type="button">Reiniciar</button>
+  <a href="../juegos/{{SLUG}}/" target="_blank" rel="noopener">Pantalla completa ↗</a>
+</div>
+<div id="marca"><a href="../"><b>Digital Sign RD</b></a><span>Demo · {{CLIENTE}}</span></div>
 
 <div id="gate">
   <form id="gateForm">
-    <h2>Demo privada</h2>
-    <p>Ingrese la clave de acceso que le compartió Digital Sign RD.</p>
+    <div class="k"><b>Digital Sign RD</b> · Demo</div>
+    <h2>{{CLIENTE}}</h2>
+    <p>Ingrese la clave de acceso que le compartimos.</p>
     <input id="clave" placeholder="CLAVE" autocomplete="off" autofocus>
     <div class="err" id="gateErr"></div>
-    <button class="btn pri" type="submit">Entrar</button>
+    <button type="submit">Entrar</button>
   </form>
 </div>
 
