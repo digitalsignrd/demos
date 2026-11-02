@@ -632,7 +632,30 @@ let pintarTeclado = function(){
 const ACENTOS = {A:'Á',E:'É',I:'Í',O:'Ó',U:'Ú'};
 $('#teclado').addEventListener('click', e => {
   const b = e.target.closest('.tecla'); if (!b) return;
-  const k = b.dataset.k, f = campoAct; if (!f) return; let v = form[f];
+  pulsarTecla(b.dataset.k);
+});
+/* Teclado físico (para probar en computadora; en el tótem no interviene) */
+document.addEventListener('keydown', e => {
+  if (pantalla !== 'registro' || !campoAct || $('#admin').classList.contains('on')) return;
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  let k = null;
+  if (e.key === 'Backspace') k = 'BORRAR';
+  else if (e.key === 'Enter' || e.key === 'Tab') k = 'SIG';
+  else if (e.key === ' ') k = 'ESPACIO';
+  else if (e.key.length === 1) k = e.key;
+  if (!k) return;
+  e.preventDefault();
+  if (k.length === 1 && campoAct !== 'telefono' && campoAct !== 'correo'){
+    // letra con acento o mayúscula escrita directamente: respetar tal cual
+    if (/[áéíóúÁÉÍÓÚüÜ]/.test(k)){ let v = form[campoAct]; if (v.length < 60){ form[campoAct] = v + k; } pintarRegistro(); return; }
+    k = k.toUpperCase();
+  }
+  if (campoAct === 'telefono' && !/^\d$/.test(k) && k !== 'BORRAR' && k !== 'SIG') return;
+  if (campoAct === 'correo' && k.length === 1 && !/^[a-zA-Z0-9@._+-]$/.test(k)) return;
+  pulsarTecla(k);
+});
+function pulsarTecla(k){
+  const f = campoAct; if (!f) return; let v = form[f];
   if (k === 'SIG'){
     const camposPaso = PASOS[paso].campos;
     const i = camposPaso.indexOf(f);
@@ -665,7 +688,7 @@ $('#teclado').addEventListener('click', e => {
   $$('.campo').forEach(c => c.dataset.campo === f && c.classList.remove('error'));
   $('#msgReg').textContent = '';
   pintarRegistro();
-});
+}
 
 $('#btnAtras').addEventListener('click', () => { if (paso > 0){ paso--; pintarPaso(); } });
 $('#btnSigPaso').addEventListener('click', () => {
