@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{CLIENTE}} · Probador de juegos · Digital Sign RD</title>
+<style>
+:root{--bg:#0F1512;--panel:#161F1A;--txt:#F2F5F3;--mut:#9AA89F;--acc:{{COLOR}};--line:#263129}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+a{color:inherit}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
+.marca{font-weight:800;letter-spacing:.18em;font-size:13px;text-transform:uppercase;color:var(--mut)}
+.marca b{color:var(--txt)}
+.marca a{text-decoration:none}
+.cli{font-size:15px;color:var(--mut)}
+.cli b{color:var(--txt);font-weight:600}
+main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;padding:32px 28px;max-width:1240px;margin:0 auto;align-items:start}
+.escenario{display:flex;justify-content:center}
+/* Marco de tótem 9:16 */
+.totem{position:relative;width:min(100%, calc((100vh - 140px) * 9 / 16));aspect-ratio:9/16;background:#000;border-radius:22px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 0 2px #2a2a2a}
+.totem::after{content:"";position:absolute;left:50%;bottom:-18px;width:38%;height:18px;background:#111;border-radius:0 0 12px 12px;transform:translateX(-50%)}
+.totem iframe{width:100%;height:100%;border:0;border-radius:10px;background:#F3F8F4;display:block}
+aside{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+aside h1{margin:0 0 6px;font-size:22px;line-height:1.2}
+aside .ev{color:var(--acc);filter:brightness(1.6);font-weight:600;font-size:14px;margin-bottom:14px}
+aside p{color:var(--mut);font-size:15px;line-height:1.5;margin:0 0 18px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:#1E2A23;color:var(--txt);font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;margin-bottom:10px}
+.btn.pri{background:var(--txt);color:#0F1512;border-color:transparent}
+.nota{font-size:13px;color:var(--mut);line-height:1.5;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+/* Gate de clave */
+#gate{position:fixed;inset:0;background:rgba(15,21,18,.96);display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
+#gate.on{display:flex}
+#gate form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px;max-width:380px;width:100%}
+#gate h2{margin:0 0 8px;font-size:20px}
+#gate p{color:var(--mut);margin:0 0 18px;font-size:14px}
+#gate input{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:#0F1512;color:var(--txt);font-size:18px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+#gate .err{color:#F28B82;font-size:13px;min-height:18px;margin-bottom:8px}
+@media (max-width:900px){
+  main{grid-template-columns:1fr;padding:20px 16px}
+  .totem{width:min(100%, calc((100vh - 220px) * 9 / 16));margin:0 auto}
+  aside{order:-1}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="marca"><a href="../">Digital Sign RD · <b>Probador de juegos</b></a></div>
+  <div class="cli">Demo para <b>{{CLIENTE}}</b></div>
+</header>
+<main>
+  <div class="escenario">
+    <div class="totem"><iframe id="juego" title="{{TITULO}}" allow="fullscreen"></iframe></div>
+  </div>
+  <aside>
+    <h1>{{TITULO}}</h1>
+    <div class="ev">{{EVENTO}}</div>
+    <p>{{DESCRIPCION}}</p>
+    <a class="btn pri" id="abrir" href="../juegos/{{SLUG}}/" target="_blank" rel="noopener">Abrir a pantalla completa ↗</a>
+    <button class="btn" id="reiniciar" type="button">Reiniciar demo</button>
+    <div class="nota">
+      Esta es una versión de prueba: los datos que ingrese no se guardan ni se envían a ninguna base de datos.
+      La pantalla simula un tótem vertical de 1080 × 1920 px; en el equipo real todo se ve a tamaño completo y se controla por toque.
+      <br><br>¿Comentarios o cambios? Escríbanos a <a href="mailto:digitalsignrd@gmail.com">digitalsignrd@gmail.com</a>.
+    </div>
+  </aside>
+</main>
+
+<div id="gate">
+  <form id="gateForm">
+    <h2>Demo privada</h2>
+    <p>Ingrese la clave de acceso que le compartió Digital Sign RD.</p>
+    <input id="clave" placeholder="CLAVE" autocomplete="off" autofocus>
+    <div class="err" id="gateErr"></div>
+    <button class="btn pri" type="submit">Entrar</button>
+  </form>
+</div>
+
+<script>
+(function(){
+  var CLAVE = "{{CLAVE}}"; // vacío = sin clave
+  var SRC = "../juegos/{{SLUG}}/";
+  var fr = document.getElementById('juego');
+  function cargar(){ fr.src = SRC + '?t=' + Date.now(); }
+  function ok(){ try{ return !CLAVE || localStorage.getItem('demo_{{SLUG}}') === '1'; }catch(e){ return !CLAVE; } }
+  if (ok()) cargar(); else document.getElementById('gate').classList.add('on');
+  document.getElementById('gateForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = document.getElementById('clave').value.trim().toUpperCase();
+    if (v === CLAVE.toUpperCase()){
+      try{ localStorage.setItem('demo_{{SLUG}}','1'); }catch(err){}
+      document.getElementById('gate').classList.remove('on'); cargar();
+    } else { document.getElementById('gateErr').textContent = 'Clave incorrecta.'; }
+  });
+  document.getElementById('reiniciar').addEventListener('click', cargar);
+})();
+</script>
+</body>
+</html>

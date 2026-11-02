@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "sersalud",
+    "cliente": "Ser Salud",
+    "titulo": "Evaluación de Salud Ocupacional",
+    "evento": "Congreso COPARDOM 2026",
+    "descripcion": "Registro de participantes, cuestionario de 5 preguntas con puntuación automática, selección de áreas de interés y resultado personalizado por nivel.",
+    "clave": "COPARDOM",
+    "color": "#2B5535",
+    "fecha": "2026-11"
+  }
+]
