@@ -29,7 +29,7 @@ button{font-family:inherit;color:inherit;cursor:pointer;-webkit-user-select:none
 .deco{position:absolute;pointer-events:none;opacity:.07}
 .deco img{width:100%;height:100%}
 /* Títulos con Bebas Neue (línea gráfica actual de Ser Salud) */
-#inicio h1,#registro h1,#areas .titulo h1,#resultado h1,#final h1,.nivel-chip,.btn.grande{font-family:'Bebas Neue','Jost',sans-serif;font-weight:400;letter-spacing:.015em}
+#inicio h1,#registro h1,#areas .titulo h1,#juegos .titulo h1,#sopa .titulo h1,#resultado h1,#final h1,.nivel-chip,.btn.grande{font-family:'Bebas Neue','Jost',sans-serif;font-weight:400;letter-spacing:.015em}
 #inicio .sub.fuerte{font-weight:600;color:var(--verde-osc);margin-bottom:34px}
 
 /* ---------- INICIO ---------- */
@@ -205,6 +205,93 @@ html.nogap .niveles-stats{grid-gap:16px}
 html.nogap .acciones{grid-gap:16px}
 html.nogap .col24>*+*{margin-top:24px}
 html.nogap .col22>*+*{margin-top:22px}
+.tarjetas{display:flex;flex-direction:column;gap:36px;width:100%}
+.tarjeta{display:flex;align-items:center;gap:44px;text-align:left;background:#fff;border:4px solid var(--linea);border-radius:44px;padding:44px 48px;box-shadow:0 18px 40px rgba(43,85,53,.10)}
+.tarjeta:active{transform:scale(.99);border-color:var(--verde)}
+.tarjeta .ico{width:190px;height:190px;border-radius:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.tarjeta h2{margin:0 0 10px;font-size:64px;font-weight:800;color:var(--verde-osc);line-height:1}
+.tarjeta p{margin:0;font-size:34px;line-height:1.3;color:var(--gris)}
+.tarjeta .ir{margin-left:auto;width:96px;height:96px;border-radius:50%;background:var(--verde-osc);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.mini-sopa{display:grid;grid-template-columns:repeat(4,30px);gap:6px;font-weight:800;font-size:26px;color:var(--verde-osc)}
+.mini-sopa span{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.mini-sopa span.h{background:var(--lima);color:#fff}
+#intro{align-items:center;justify-content:center;padding:80px;text-align:center}
+#intro .ico{width:280px;height:280px;border-radius:60px;background:#fff;border:4px solid var(--linea);display:flex;align-items:center;justify-content:center;margin-bottom:60px}
+#intro h1{font-size:96px;margin:0 0 30px;font-weight:800;color:var(--verde-osc);line-height:1}
+#intro p{font-size:44px;line-height:1.35;color:var(--gris);margin:0 0 30px;max-width:880px}
+#intro .reglas{display:flex;gap:24px;margin:20px 0 80px}
+#intro .regla{background:#fff;border:3px solid var(--linea);border-radius:28px;padding:26px 34px;font-size:34px;font-weight:600;color:var(--verde-osc)}
+.marcador{display:flex;gap:18px}
+.dato{background:#fff;border:3px solid var(--linea);border-radius:26px;padding:12px 28px;display:flex;flex-direction:column;align-items:center;min-width:180px}
+.dato .k{font-size:22px;font-weight:600;letter-spacing:.08em;color:var(--gris);text-transform:uppercase}
+.dato .v{font-size:56px;font-weight:800;line-height:1.05;color:var(--verde-osc)}
+.dato.alerta{border-color:var(--rojo)}
+.dato.alerta .v{color:var(--rojo)}
+#sopa .titulo{padding:34px 60px 0}
+#sopa .titulo h1{margin:0;font-size:64px;font-weight:800;color:var(--verde-osc);line-height:1}
+#sopa .titulo p{margin:12px 0 0;font-size:30px;color:var(--gris)}
+.tablero{margin:30px auto 0;display:grid;grid-template-columns:repeat(12,76px);gap:4px;padding:16px;background:#fff;border-radius:36px;border:4px solid var(--linea);touch-action:none}
+.celda{width:76px;height:76px;display:flex;align-items:center;justify-content:center;font-size:46px;font-weight:700;color:var(--tinta);border-radius:16px;transition:background .12s}
+.celda.sel{background:var(--verde);color:#fff}
+.celda.ancla{background:var(--lima);color:#fff;box-shadow:0 0 0 4px var(--verde-osc) inset}
+.celda.h0{background:#CFE6C0}
+.celda.h1{background:#C7E2D5}
+.celda.h2{background:#E6EFC2}
+.celda.h3{background:#BFDCC9}
+.celda.h0,.celda.h1,.celda.h2,.celda.h3{color:var(--verde-osc)}
+.celda.sel.h0,.celda.sel.h1,.celda.sel.h2,.celda.sel.h3{background:var(--verde);color:#fff}
+.lista-pal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;padding:34px 70px 0}
+.pal{display:flex;align-items:center;gap:18px;font-size:42px;font-weight:600;color:var(--tinta)}
+.pal .bola{width:44px;height:44px;border-radius:50%;border:4px solid var(--linea);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.pal.ok{color:#7C8E82;text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:var(--verde)}
+.pal.ok .bola{background:var(--verde);border-color:var(--verde)}
+#sopa .abajo{margin-top:auto;padding:0 60px 60px;display:flex;justify-content:center}
+.toast{position:absolute;left:50%;top:880px;transform:translate(-50%,-50%) scale(.8);background:var(--verde-osc);color:#fff;font-size:60px;font-weight:800;padding:30px 60px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s}
+.toast.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.tiempo{margin:30px 56px 0;height:20px;border-radius:10px;background:#DCE8DF;overflow:hidden}
+.tiempo div{height:100%;background:var(--lima);width:100%}
+.tiempo.poco div{background:var(--rojo)}
+.puntos-preg span.bien{background:var(--verde)}
+.puntos-preg span.mal{background:var(--rojo)}
+.op.bien{border-color:var(--verde);background:#E3F1E7}
+.op.bien .l{background:var(--verde);color:#fff}
+.op.mal{border-color:var(--rojo);background:var(--rojo-cl)}
+.op.mal .l{background:var(--rojo);color:#fff}
+.op.apagada{opacity:.45}
+.explica{margin:34px 56px 0;background:#fff;border:4px solid var(--linea);border-radius:34px;padding:30px 36px;display:none;gap:26px;align-items:center}
+.explica.on{display:flex}
+.explica .t{font-size:30px;line-height:1.4;color:var(--tinta)}
+.explica .t b{display:block;font-size:34px;color:var(--verde-osc);margin-bottom:6px}
+#trivia .abajo{margin-top:auto;padding:0 56px 56px;display:flex;justify-content:center;min-height:180px}
+/* ---------- JUEGOS (menú) y FIN DE JUEGO ---------- */
+#juegos{padding-bottom:60px}
+#juegos .titulo{padding:40px 60px 0;text-align:center}
+#juegos .titulo h1{margin:0;font-size:96px;font-weight:800;color:var(--verde-osc);line-height:1.05}
+#juegos .titulo p{margin:16px 0 0;font-size:36px;color:var(--gris)}
+#juegos .tarjetas{padding:50px 60px 0;width:auto}
+#juegos .abajo{margin-top:auto;padding:40px 60px 0;display:flex;justify-content:center}
+#juegos .abajo .btn{width:100%}
+#intro .ico{width:280px;height:280px;border-radius:60px;background:#fff;border:4px solid var(--linea);display:flex;align-items:center;justify-content:center;margin-bottom:40px}
+#intro h1{font-family:'Bebas Neue','Jost',sans-serif;font-weight:400;letter-spacing:.015em}
+#juegoFin{align-items:center;justify-content:center;padding:80px;text-align:center}
+#juegoFin .medalla{width:340px;height:340px;border-radius:50%;background:#fff;border:6px solid var(--lima);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 0 40px}
+#juegoFin .medalla .v{font-size:120px;font-weight:800;color:var(--verde-osc);line-height:1}
+#juegoFin .medalla .k{font-size:30px;font-weight:600;color:var(--gris);letter-spacing:.1em}
+#juegoFin h1{font-family:'Bebas Neue','Jost',sans-serif;font-weight:400;letter-spacing:.015em;font-size:96px;margin:0 0 20px;color:var(--verde-osc);line-height:1}
+#juegoFin .det{font-size:44px;line-height:1.35;color:var(--gris);margin:0 0 60px;max-width:880px}
+#juegoFin .btn{width:640px}
+#juegoFin .auto{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:26px;color:var(--gris)}
+/* Compatibilidad WebView antiguo para los juegos */
+html.nogap .tarjetas>*+*{margin-top:36px}
+html.nogap .tarjeta>*+*{margin-left:44px}
+html.nogap .marcador>*+*{margin-left:18px}
+html.nogap #intro .reglas>*+*{margin-left:24px}
+html.nogap .pal>*+*{margin-left:18px}
+html.nogap .explica>*+*{margin-left:26px}
+html.nogap .lista-pal{grid-gap:16px 24px}
+html.nogap .tablero{grid-gap:4px}
+html.nogap .mini-sopa{grid-gap:6px}
+
 </style>
 </head>
 <body>
@@ -321,7 +408,7 @@ html.nogap .col22>*+*{margin-top:22px}
     <p class="nota">Estos niveles son orientativos y se basan exclusivamente en las respuestas del participante. No constituyen una auditoría ni una certificación de cumplimiento legal.</p>
     <div class="acciones-res">
       <button class="btn sec" id="btnEnviarCorreo">Enviar mi resultado por correo</button>
-      <button class="btn" id="btnIrFinal">Continuar</button>
+      <button class="btn" id="btnIrFinal">Continuar al juego</button>
     </div>
     <div class="auto" id="resAuto"></div>
   </section>
@@ -336,6 +423,84 @@ html.nogap .col22>*+*{margin-top:22px}
     <button class="btn grande" id="btnAsesoria">SOLICITAR ASESORÍA</button>
     <button class="btn sec" data-accion="inicio">Finalizar</button>
     <div class="auto" id="finalAuto"></div>
+  </section>
+
+
+  <!-- ================= JUEGOS (menú) ================= -->
+  <section class="screen" id="juegos">
+    <div class="barra"><div class="logo"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI4OCIgdmlld0JveD0iMCAwIDI4OCAyODgiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDE3MC4xNDg0MzggMjU2LjUgQyAxNjYuNDMzNTk0IDI1Ni41IDE2My4xMTcxODggMjU1LjI2MTcxOSAxNjAuMjIyNjU2IDI1Mi43OTI5NjkgQyAxNjAuNzUgMjUxLjMwNDY4OCAxNjEuMTUyMzQ0IDI0OS4zNzEwOTQgMTYxLjQ0OTIxOSAyNDYuOTU3MDMxIEwgMTYyLjM1OTM3NSAyNDYuOTU3MDMxIEMgMTY0LjI2NTYyNSAyNTEuMzM1OTM4IDE2Ny4zMjQyMTkgMjUzLjUzOTA2MiAxNzEuNTM5MDYyIDI1My41MzkwNjIgQyAxNzQuMDIzNDM4IDI1My41MzkwNjIgMTc2LjA0Njg3NSAyNTIuNjk1MzEyIDE3Ny42MDU0NjkgMjUxLjAxOTUzMSBDIDE3OS4xNjc5NjkgMjQ5LjM1MTU2MiAxNzkuOTQxNDA2IDI0Ny4xODM1OTQgMTc5Ljk0MTQwNiAyNDQuNTMxMjUgQyAxNzkuOTQxNDA2IDI0MS4yMDcwMzEgMTc4LjM3NSAyMzguNzYxNzE5IDE3NS4yNjk1MzEgMjM3LjE5MTQwNiBMIDE2Ni4zMzk4NDQgMjMyLjgzOTg0NCBDIDE2My4wOTc2NTYgMjMwLjU4OTg0NCAxNjEuNDY4NzUgMjI3LjM1OTM3NSAxNjEuNDY4NzUgMjIzLjEyNSBDIDE2MS40Njg3NSAyMTkuMjYxNzE5IDE2Mi43NjU2MjUgMjE2LjIxODc1IDE2NS4zNzg5MDYgMjE0LjA1MDc4MSBDIDE2Ny43NTM5MDYgMjEyLjAyMzQzOCAxNzAuODA0Njg4IDIxMS4wMjM0MzggMTc0LjU1MDc4MSAyMTEuMDIzNDM4IEMgMTc4LjE0ODQzOCAyMTEuMDIzNDM4IDE4MS4xMjEwOTQgMjEyLjA2NjQwNiAxODMuNDk2MDk0IDIxNC4xMzY3MTkgQyAxODIuOTA2MjUgMjE1LjM3NSAxODIuMzM1OTM4IDIxNy4yMTA5MzggMTgxLjgwMDc4MSAyMTkuNjIxMDk0IEwgMTgwLjkwMjM0NCAyMTkuNjIxMDk0IEMgMTc5LjUxMTcxOSAyMTUuNjUyMzQ0IDE3Ny4yMDMxMjUgMjEzLjY2Nzk2OSAxNzMuOTg0Mzc1IDIxMy42Njc5NjkgQyAxNzEuNzgxMjUgMjEzLjY2Nzk2OSAxNjkuOTU3MDMxIDIxNC4zNjcxODggMTY4LjU1MDc4MSAyMTUuNzUzOTA2IEMgMTY3LjE0ODQzOCAyMTcuMTQ0NTMxIDE2Ni40NDE0MDYgMjE4Ljk5NjA5NCAxNjYuNDQxNDA2IDIyMS4zMzIwMzEgQyAxNjYuNDQxNDA2IDIyNC43NzczNDQgMTY4LjAxNTYyNSAyMjcuMjY1NjI1IDE3MS4xNTYyNSAyMjguNzgxMjUgTCAxODAuMDM5MDYyIDIzMy4wNTQ2ODggQyAxODMuMjg5MDYyIDIzNS4xNTIzNDQgMTg0LjkxNDA2MiAyMzguMTg3NSAxODQuOTE0MDYyIDI0Mi4xNDg0MzggQyAxODQuOTE0MDYyIDI0Ni41MTU2MjUgMTgzLjQ3MjY1NiAyNTAuMDQyOTY5IDE4MC41NTg1OTQgMjUyLjcwNzAzMSBDIDE3Ny43OTY4NzUgMjU1LjIyNjU2MiAxNzQuMzI4MTI1IDI1Ni41IDE3MC4xNDg0MzggMjU2LjUgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjAzLjI3NzM0NCAyMzkuNzg5MDYyIEwgMTk1LjcxODc1IDI0MS42NzE4NzUgQyAxOTIuNjI1IDI0Mi43NzczNDQgMTkxLjA3MDMxMiAyNDQuNzIyNjU2IDE5MS4wNzAzMTIgMjQ3LjQ4ODI4MSBDIDE5MS4wNzAzMTIgMjQ5LjE4MzU5NCAxOTEuNDkyMTg4IDI1MC41NjI1IDE5Mi4zMzk4NDQgMjUxLjYyMTA5NCBDIDE5My4yNDYwOTQgMjUyLjc2MTcxOSAxOTQuNDc2NTYyIDI1My4zNTE1NjIgMTk2LjAwNzgxMiAyNTMuMzUxNTYyIEMgMTk4Ljg1MTU2MiAyNTMuMzUxNTYyIDIwMS4xNDQ1MzEgMjUxLjg5ODQzOCAyMDIuOTE0MDYyIDI0OS4wMDM5MDYgWiBNIDIxMS4xODc1IDI1NC42Mjg5MDYgQyAyMDkuODE2NDA2IDI1NS4yMzQzNzUgMjA4LjUxNTYyNSAyNTUuNTU0Njg4IDIwNy4yNTc4MTIgMjU1LjU1NDY4OCBDIDIwNC44MjQyMTkgMjU1LjU1NDY4OCAyMDMuNDQxNDA2IDI1NC4zMjAzMTIgMjAzLjA5NzY1NiAyNTEuODQ3NjU2IEMgMjAwLjIxMDkzOCAyNTQuODIwMzEyIDE5Ny4xMjg5MDYgMjU2LjMwNDY4OCAxOTMuODgyODEyIDI1Ni4zMDQ2ODggQyAxOTEuNjU2MjUgMjU2LjMwNDY4OCAxODkuNzYxNzE5IDI1NS41ODU5MzggMTg4LjI2NTYyNSAyNTQuMTYwMTU2IEMgMTg2LjY5NTMxMiAyNTIuNjgzNTk0IDE4NS45MTc5NjkgMjUwLjc1NzgxMiAxODUuOTE3OTY5IDI0OC40MDIzNDQgQyAxODUuOTE3OTY5IDI0My40OTYwOTQgMTg4Ljc4MTI1IDI0MC41NTA3ODEgMTk0LjQ2NDg0NCAyMzkuNjA1NDY5IEMgMTk4LjU4MjAzMSAyMzguOTQxNDA2IDIwMS4xMjUgMjM4LjM1NTQ2OSAyMDIuMTEzMjgxIDIzNy44MzIwMzEgQyAyMDIuODg2NzE5IDIzNy40Mzc1IDIwMy4yNzczNDQgMjM2LjYyNSAyMDMuMjc3MzQ0IDIzNS4zNzEwOTQgQyAyMDMuMjc3MzQ0IDIzMC4xNzU3ODEgMjAxLjE3NTc4MSAyMjcuNTg1OTM4IDE5Ni45OTIxODggMjI3LjU4NTkzOCBDIDE5My40OTYwOTQgMjI3LjU4NTkzOCAxOTEuMDE1NjI1IDIyOS4wMDM5MDYgMTg5LjUzOTA2MiAyMzEuODMyMDMxIEwgMTg4LjY0MDYyNSAyMzEuODMyMDMxIEwgMTg4LjY2Nzk2OSAyMjguMzUxNTYyIEMgMTkxLjgxMjUgMjI1Ljg2MzI4MSAxOTUuMDUwNzgxIDIyNC42Mjg5MDYgMTk4LjM3NSAyMjQuNjI4OTA2IEMgMjAxLjIxODc1IDIyNC42Mjg5MDYgMjAzLjUyNzM0NCAyMjUuNDQ5MjE5IDIwNS4yOTI5NjkgMjI3LjA2MjUgQyAyMDYuMjYxNzE5IDIyNy45NDUzMTIgMjA2Ljk2ODc1IDIyOC45NDkyMTkgMjA3LjQwMjM0NCAyMzAuMDg1OTM4IEMgMjA3Ljg3ODkwNiAyMzEuMzI4MTI1IDIwOC4xMDkzNzUgMjMyLjY4MzU5NCAyMDguMDc4MTI1IDIzNC4xMjEwOTQgTCAyMDcuNzEwOTM4IDI0OC44MTI1IEMgMjA3LjYzMjgxMiAyNTEuODMyMDMxIDIwOC4zNDc2NTYgMjUzLjM1MTU2MiAyMDkuODA0Njg4IDI1My4zNTE1NjIgQyAyMTAuMzQzNzUgMjUzLjM1MTU2MiAyMTAuODEyNSAyNTMuMTc5Njg4IDIxMS4xODc1IDI1Mi44NjMyODEgWiBNIDIxMS4xODc1IDI1NC42Mjg5MDYgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjIwLjY1MjM0NCAyMDcuNjIxMDk0IEMgMjIwLjQ3NjU2MiAyMDkuNjM2NzE5IDIyMC4zMjgxMjUgMjEyLjIwMzEyNSAyMjAuMjE0ODQ0IDIxNS4zNDc2NTYgQyAyMjAuMTM2NzE5IDIxNy4xNDA2MjUgMjIwLjA3ODEyNSAyMjAuNjcxODc1IDIyMC4wMDM5MDYgMjI1Ljk1MzEyNSBMIDIxOS45MTAxNTYgMjM3LjM0Mzc1IEMgMjE5Ljg5MDYyNSAyNDAuMDI3MzQ0IDIxOS45NjQ4NDQgMjQ0LjQyNTc4MSAyMjAuMTQ4NDM4IDI1MC41MzkwNjIgQyAyMjAuMjI2NTYyIDI1My4zMDA3ODEgMjIwLjI4MTI1IDI1NS4wMjM0MzggMjIwLjI4MTI1IDI1NS42NzU3ODEgQyAyMTkuMjU3ODEyIDI1NS40Mzc1IDIxOC4zMTY0MDYgMjU1LjMyMDMxMiAyMTcuNDUzMTI1IDI1NS4zMjAzMTIgQyAyMTYuNjEzMjgxIDI1NS4zMjAzMTIgMjE1LjY4MzU5NCAyNTUuNDM3NSAyMTQuNjQwNjI1IDI1NS42NzU3ODEgQyAyMTQuNzg5MDYyIDI1My42NDQ1MzEgMjE0LjkzMzU5NCAyNTEuMDMxMjUgMjE1LjA1MDc4MSAyNDcuODI4MTI1IEMgMjE1LjExNzE4OCAyNDUuOTgwNDY5IDIxNS4xNzU3ODEgMjQyLjQ5MjE4OCAyMTUuMjM0Mzc1IDIzNy4zNDM3NSBMIDIxNS4zNjcxODggMjI1Ljk1MzEyNSBDIDIxNS4zOTQ1MzEgMjIzLjgwODU5NCAyMTUuMzM1OTM4IDIyMC44NDc2NTYgMjE1LjIzNDM3NSAyMTcuMDk3NjU2IEwgMjE1LjAyMzQzOCAyMDcuNjIxMDk0IEMgMjE2LjAzNTE1NiAyMDcuODU1NDY5IDIxNi45NzY1NjIgMjA3Ljk2ODc1IDIxNy44NDc2NTYgMjA3Ljk2ODc1IEMgMjE4LjY3MTg3NSAyMDcuOTY4NzUgMjE5LjYxMzI4MSAyMDcuODU1NDY5IDIyMC42NTIzNDQgMjA3LjYyMTA5NCAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyNDUuNjU2MjUgMjQyLjQ5MjE4OCBMIDI0NS42NTYyNSAyMjcuNDQ1MzEyIEMgMjQ1LjY0NDUzMSAyMjcuMTkxNDA2IDI0NS42NDQ1MzEgMjI2LjgxNjQwNiAyNDUuNjU2MjUgMjI2LjI5Njg3NSBMIDI0NS42NTYyNSAyMjUuMTk1MzEyIEMgMjQ2LjY2MDE1NiAyMjUuNDM3NSAyNDcuNTIzNDM4IDIyNS41NjI1IDI0OC4yNSAyMjUuNTYyNSBDIDI0OC45Njg3NSAyMjUuNTYyNSAyNDkuODE2NDA2IDIyNS40Mzc1IDI1MC43ODEyNSAyMjUuMTk1MzEyIEMgMjUwLjc4MTI1IDIyNi41NzQyMTkgMjUwLjcyNjU2MiAyMjguNjI1IDI1MC42MzY3MTkgMjMxLjM1NTQ2OSBMIDI1MC4zMzIwMzEgMjM3LjEzMjgxMiBDIDI1MC4yOTI5NjkgMjQwLjM2MzI4MSAyNTAuMjgxMjUgMjQyLjgzNTkzOCAyNTAuMjgxMjUgMjQ0LjUzOTA2MiBDIDI1MC4yODEyNSAyNDYuNDM3NSAyNTAuMjkyOTY5IDI0OC42OTE0MDYgMjUwLjMzMjAzMSAyNTEuMzM1OTM4IEwgMjUwLjMzMjAzMSAyNTUuNjgzNTk0IEMgMjQ5LjM0Mzc1IDI1NS40Mzc1IDI0OC41MTk1MzEgMjU1LjMyMDMxMiAyNDcuODY3MTg4IDI1NS4zMjAzMTIgQyAyNDcuMTQ4NDM4IDI1NS4zMjAzMTIgMjQ2LjMwODU5NCAyNTUuNDM3NSAyNDUuMzY3MTg4IDI1NS42ODM1OTQgQyAyNDUuMzY3MTg4IDI1NS4wMjM0MzggMjQ1LjM3ODkwNiAyNTQuNDg4MjgxIDI0NS4zOTg0MzggMjU0LjA3NDIxOSBDIDI0NS41NjI1IDI1Mi4wNjI1IDI0NS42NTYyNSAyNTAuODQ3NjU2IDI0NS42NTYyNSAyNTAuNDM3NSBDIDI0My40OTYwOTQgMjU0LjM1MTU2MiAyNDAuNDAyMzQ0IDI1Ni4zMDg1OTQgMjM2LjM5MDYyNSAyNTYuMzA4NTk0IEMgMjMxLjUxNTYyNSAyNTYuMzA4NTk0IDIyOC40MTc5NjkgMjU0LjMwNDY4OCAyMjcuMDgyMDMxIDI1MC4zMDg1OTQgQyAyMjYuNTkzNzUgMjQ4Ljg5MDYyNSAyMjYuMzc1IDI0Ny4zOTA2MjUgMjI2LjQwNjI1IDI0NS44MDg1OTQgTCAyMjYuNzE4NzUgMjM1LjQwMjM0NCBMIDIyNi43MTg3NSAyMjUuMTk1MzEyIEMgMjI3LjcxNDg0NCAyMjUuNDM3NSAyMjguNTc4MTI1IDIyNS41NjI1IDIyOS4yOTY4NzUgMjI1LjU2MjUgQyAyMjkuOTcyNjU2IDIyNS41NjI1IDIzMC44Mzk4NDQgMjI1LjQzNzUgMjMxLjg1NTQ2OSAyMjUuMTk1MzEyIEMgMjMxLjM0NzY1NiAyMzEuODA0Njg4IDIzMS4wODIwMzEgMjM3LjcwNzAzMSAyMzEuMDgyMDMxIDI0Mi45Mjk2ODggQyAyMzEuMDgyMDMxIDI0OS40NDkyMTkgMjMzLjM0Mzc1IDI1Mi43MTQ4NDQgMjM3Ljg0Mzc1IDI1Mi43MTQ4NDQgQyAyNDAuOTk2MDk0IDI1Mi43MTQ4NDQgMjQzLjEzNjcxOSAyNTEuNDAyMzQ0IDI0NC4zMTY0MDYgMjQ4Ljc4NTE1NiBDIDI0NS4yNSAyNDYuNjc1NzgxIDI0NS42ODc1IDI0NC41ODk4NDQgMjQ1LjY1NjI1IDI0Mi40OTIxODggTSAyNDUuNzMwNDY5IDI0Mi4zODI4MTIgTCAyNDUuODc1IDI0Mi4zODI4MTIgTCAyNDYuMDY2NDA2IDI0MS4yNDYwOTQgTCAyNDUuODk0NTMxIDI0MS44MjgxMjUgWiBNIDI0NS43MzA0NjkgMjQyLjM4MjgxMiAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyODEuMDExNzE5IDIwNy42MjEwOTQgQyAyODAuMjg1MTU2IDIxNC41MzEyNSAyNzkuOTY0ODQ0IDIyNS40NTMxMjUgMjgwLjAxNTYyNSAyNDAuMzkwNjI1IEwgMjgwLjAxNTYyNSAyNTUuNjc1NzgxIEwgMjc3LjU1ODU5NCAyNTUuMzIwMzEyIEwgMjc1LjE1NjI1IDI1NS42NzU3ODEgTCAyNzUuMzk0NTMxIDI0OS43NjE3MTkgQyAyNzMuMzE2NDA2IDI1NC4xMjUgMjY5Ljk4MDQ2OSAyNTYuMzA4NTk0IDI2NS4zNzUgMjU2LjMwODU5NCBDIDI2MS41MTE3MTkgMjU2LjMwODU5NCAyNTguNDgwNDY5IDI1NC42Nzk2ODggMjU2LjI2MTcxOSAyNTEuNDQ5MjE5IEMgMjU0LjMzNTkzOCAyNDguNjE3MTg4IDI1My4zNzUgMjQ1LjAxMTcxOSAyNTMuMzc1IDI0MC42NDQ1MzEgQyAyNTMuMzc1IDIzNS42Mjg5MDYgMjU0Ljc3MzQzOCAyMzEuNTk3NjU2IDI1Ny41NzAzMTIgMjI4LjU2MjUgQyAyNTkuOTg4MjgxIDIyNS45NDUzMTIgMjYyLjkyMTg3NSAyMjQuNjMyODEyIDI2Ni4zNDc2NTYgMjI0LjYzMjgxMiBDIDI3MC42NDQ1MzEgMjI0LjYzMjgxMiAyNzMuNjY0MDYyIDIyNi42NDA2MjUgMjc1LjM5NDUzMSAyMzAuNjM2NzE5IEwgMjc1LjM5NDUzMSAyMDcuNjIxMDk0IEwgMjc4LjE4MzU5NCAyMDcuOTY4NzUgWiBNIDI3NS41NzQyMTkgMjM5LjgyMDMxMiBDIDI3NS41NzQyMTkgMjMxLjY2NDA2MiAyNzIuNzY5NTMxIDIyNy41ODIwMzEgMjY3LjE0NDUzMSAyMjcuNTgyMDMxIEMgMjY0LjIzODI4MSAyMjcuNTgyMDMxIDI2Mi4wNTQ2ODggMjI5LjEzMjgxMiAyNjAuNTc0MjE5IDIzMi4yMjI2NTYgQyAyNTkuNDAyMzQ0IDIzNC43MzgyODEgMjU4LjgxNjQwNiAyMzcuNjY0MDYyIDI1OC44MTY0MDYgMjQxLjAxNTYyNSBDIDI1OC44MTY0MDYgMjQ5LjQ0OTIxOSAyNjEuNDY0ODQ0IDI1My42NDg0MzggMjY2Ljc3MzQzOCAyNTMuNjQ4NDM4IEMgMjY5LjU5NzY1NiAyNTMuNjQ4NDM4IDI3MS44MDg1OTQgMjUyLjIxNDg0NCAyNzMuNDQxNDA2IDI0OS4zMjQyMTkgQyAyNzQuODU5Mzc1IDI0Ni43NTc4MTIgMjc1LjU3NDIxOSAyNDMuNTkzNzUgMjc1LjU3NDIxOSAyMzkuODIwMzEyICIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDE3MC4xNDg0MzggMjA0LjAxMTcxOSBDIDE2Ni40MzM1OTQgMjA0LjAxMTcxOSAxNjMuMTE3MTg4IDIwMi43ODUxNTYgMTYwLjIyMjY1NiAyMDAuMzE2NDA2IEMgMTYwLjc1IDE5OC44MjgxMjUgMTYxLjE1MjM0NCAxOTYuODgyODEyIDE2MS40NDkyMTkgMTk0LjQ4ODI4MSBMIDE2Mi4zNTkzNzUgMTk0LjQ4ODI4MSBDIDE2NC4yNjU2MjUgMTk4Ljg1OTM3NSAxNjcuMzI0MjE5IDIwMS4wNTg1OTQgMTcxLjUzOTA2MiAyMDEuMDU4NTk0IEMgMTc0LjAyMzQzOCAyMDEuMDU4NTk0IDE3Ni4wNDY4NzUgMjAwLjIxODc1IDE3Ny42MDU0NjkgMTk4LjU0Mjk2OSBDIDE3OS4xNjc5NjkgMTk2Ljg2NzE4OCAxNzkuOTQxNDA2IDE5NC43MDcwMzEgMTc5Ljk0MTQwNiAxOTIuMDYyNSBDIDE3OS45NDE0MDYgMTg4LjcyNjU2MiAxNzguMzc1IDE4Ni4yODUxNTYgMTc1LjI2OTUzMSAxODQuNzIyNjU2IEwgMTY2LjMzOTg0NCAxODAuMzQ3NjU2IEMgMTYzLjA5NzY1NiAxNzguMTIxMDk0IDE2MS40Njg3NSAxNzQuODgyODEyIDE2MS40Njg3NSAxNzAuNjQ4NDM4IEMgMTYxLjQ2ODc1IDE2Ni43Njk1MzEgMTYyLjc2NTYyNSAxNjMuNzM4MjgxIDE2NS4zNzg5MDYgMTYxLjU3NDIxOSBDIDE2Ny43NTM5MDYgMTU5LjU1MDc4MSAxNzAuODA0Njg4IDE1OC41NTQ2ODggMTc0LjU1MDc4MSAxNTguNTU0Njg4IEMgMTc4LjE0ODQzOCAxNTguNTU0Njg4IDE4MS4xMjEwOTQgMTU5LjU4MjAzMSAxODMuNDk2MDk0IDE2MS42NjAxNTYgQyAxODIuOTA2MjUgMTYyLjg5NDUzMSAxODIuMzM1OTM4IDE2NC43MTg3NSAxODEuODAwNzgxIDE2Ny4xNDg0MzggTCAxODAuOTAyMzQ0IDE2Ny4xNDg0MzggQyAxNzkuNTExNzE5IDE2My4xNzU3ODEgMTc3LjIwMzEyNSAxNjEuMTgzNTk0IDE3My45ODQzNzUgMTYxLjE4MzU5NCBDIDE3MS43ODEyNSAxNjEuMTgzNTk0IDE2OS45NTcwMzEgMTYxLjg4MjgxMiAxNjguNTUwNzgxIDE2My4yNjk1MzEgQyAxNjcuMTQ4NDM4IDE2NC42NTYyNSAxNjYuNDQxNDA2IDE2Ni41MTU2MjUgMTY2LjQ0MTQwNiAxNjguODU1NDY5IEMgMTY2LjQ0MTQwNiAxNzIuMzA0Njg4IDE2OC4wMTU2MjUgMTc0Ljc4OTA2MiAxNzEuMTU2MjUgMTc2LjMwODU5NCBMIDE4MC4wMzkwNjIgMTgwLjU3ODEyNSBDIDE4My4yODkwNjIgMTgyLjY4MzU5NCAxODQuOTE0MDYyIDE4NS42OTkyMTkgMTg0LjkxNDA2MiAxODkuNjY3OTY5IEMgMTg0LjkxNDA2MiAxOTQuMDMxMjUgMTgzLjQ3MjY1NiAxOTcuNTYyNSAxODAuNTU4NTk0IDIwMC4yMjY1NjIgQyAxNzcuNzk2ODc1IDIwMi43NSAxNzQuMzI4MTI1IDIwNC4wMTE3MTkgMTcwLjE0ODQzOCAyMDQuMDExNzE5ICIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDIxMS43MDcwMzEgMTg1LjEzNjcxOSBDIDIxMS43MDcwMzEgMTg1Ljk1NzAzMSAyMTEuNjYwMTU2IDE4Ni44MTY0MDYgMjExLjU2NjQwNiAxODcuNzA3MDMxIEwgMTk4LjY4NzUgMTg3LjU3NDIxOSBMIDE5MS4wNzAzMTIgMTg3LjcwNzAzMSBMIDE5MS4wNzAzMTIgMTg5LjMzNTkzOCBDIDE5MC45NTcwMzEgMTkyLjU2MjUgMTkxLjgxNjQwNiAxOTUuMjk2ODc1IDE5My42Mjg5MDYgMTk3LjUxOTUzMSBDIDE5NS40NTcwMzEgMTk5Ljc1MzkwNiAxOTcuOTE3OTY5IDIwMC44NjcxODggMjAxLjA0Mjk2OSAyMDAuODY3MTg4IEMgMjA0LjQ4NDM3NSAyMDAuODY3MTg4IDIwNy40NDUzMTIgMTk5LjM1MTU2MiAyMDkuOTE3OTY5IDE5Ni4zMjQyMTkgTCAyMTAuNDM3NSAxOTYuNjAxNTYyIEwgMjA5Ljk5NjA5NCAxOTkuOTA2MjUgQyAyMDYuOTEwMTU2IDIwMi41MTk1MzEgMjAzLjU3NDIxOSAyMDMuODI0MjE5IDE5OS45NjA5MzggMjAzLjgyNDIxOSBDIDE5NS43MDcwMzEgMjAzLjgyNDIxOSAxOTIuMjQyMTg4IDIwMi40NTcwMzEgMTg5LjU4NTkzOCAxOTkuNzIyNjU2IEMgMTg2Ljg5NDUzMSAxOTYuOTgwNDY5IDE4NS41NjI1IDE5My4zNzEwOTQgMTg1LjU2MjUgMTg4Ljg0NzY1NiBDIDE4NS41NjI1IDE4My44OTA2MjUgMTg2LjY4MzU5NCAxNzkuOTI1NzgxIDE4OC44ODY3MTkgMTc2Ljk3NjU2MiBDIDE5MS4zMjAzMTIgMTczLjc1IDE5NC44MTY0MDYgMTcyLjE0NDUzMSAxOTkuMzk4NDM4IDE3Mi4xNDQ1MzEgQyAyMDMuMjE4NzUgMTcyLjE0NDUzMSAyMDYuMjM4MjgxIDE3My4yOTY4NzUgMjA4LjQyOTY4OCAxNzUuNTg1OTM4IEMgMjEwLjYwMTU2MiAxNzcuODc1IDIxMS43MDcwMzEgMTgxLjA1NDY4OCAyMTEuNzA3MDMxIDE4NS4xMzY3MTkgTSAyMDYuNTYyNSAxODUuMDYyNSBDIDIwNi41NjI1IDE3OC4wMDM5MDYgMjA0LjE5OTIxOSAxNzQuNDg0Mzc1IDE5OS41IDE3NC40ODQzNzUgQyAxOTYuODk4NDM4IDE3NC40ODQzNzUgMTk0Ljg0NzY1NiAxNzUuNjk5MjE5IDE5My4zNjMyODEgMTc4LjEzNjcxOSBDIDE5Mi4yMzgyODEgMTc5Ljk5MjE4OCAxOTEuNTMxMjUgMTgyLjI5Mjk2OSAxOTEuMjY5NTMxIDE4NS4wNjI1IEwgMTk4LjgyMDMxMiAxODUuMjQ2MDk0IFogTSAyMDYuNTYyNSAxODUuMDYyNSAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyMjguNjE3MTg4IDE3Mi41NzgxMjUgQyAyMjguMjkyOTY5IDE3My40MTQwNjIgMjI4LjE1MjM0NCAxNzUuMTY3OTY5IDIyOC4xNTIzNDQgMTc3Ljg1MTU2MiBMIDIyNy41NjY0MDYgMTc4LjI4OTA2MiBDIDIyNi45NzI2NTYgMTc3LjU4OTg0NCAyMjYuMDE1NjI1IDE3Ny4yNDYwOTQgMjI0LjY3OTY4OCAxNzcuMjQ2MDk0IEMgMjIyLjcyNjU2MiAxNzcuMjQ2MDk0IDIyMS4yMDMxMjUgMTc4LjIwMzEyNSAyMjAuMTAxNTYyIDE4MC4xMDU0NjkgQyAyMTkuMTc5Njg4IDE4MS43MjI2NTYgMjE4LjczMDQ2OSAxODMuNjQwNjI1IDIxOC43MzA0NjkgMTg1Ljg0Mzc1IEwgMjE4LjczMDQ2OSAyMDMuMTk1MzEyIEMgMjE3LjcyMjY1NiAyMDIuOTY0ODQ0IDIxNi45MDIzNDQgMjAyLjg0NzY1NiAyMTYuMjUgMjAyLjg0NzY1NiBDIDIxNS41NTQ2ODggMjAyLjg0NzY1NiAyMTQuNjc5Njg4IDIwMi45NjQ4NDQgMjEzLjYzMjgxMiAyMDMuMTk1MzEyIEMgMjEzLjg5MDYyNSAyMDAuNDUzMTI1IDIxNC4wMTU2MjUgMTk1LjM4MjgxMiAyMTQuMDE1NjI1IDE4Ny45ODgyODEgQyAyMTQuMDE1NjI1IDE4NS41OTM3NSAyMTQuMDAzOTA2IDE4My4xNTIzNDQgMjEzLjk4MDQ2OSAxODAuNjQ4NDM4IEwgMjEzLjg5NDUzMSAxNzIuNzE0ODQ0IEMgMjE0Ljk5MjE4OCAxNzIuOTY0ODQ0IDIxNS44NzEwOTQgMTczLjA3ODEyNSAyMTYuNTE5NTMxIDE3My4wNzgxMjUgQyAyMTcuMjM4MjgxIDE3My4wNzgxMjUgMjE4LjA4NTkzOCAxNzIuOTY0ODQ0IDIxOS4wNTg1OTQgMTcyLjcxNDg0NCBDIDIxOC44MjQyMTkgMTc0LjkzNzUgMjE4LjY5MTQwNiAxNzYuOTI5Njg4IDIxOC42OTE0MDYgMTc4LjY4MzU5NCBDIDIyMC45NjA5MzggMTc0LjMxNjQwNiAyMjMuNTYyNSAxNzIuMTQ4NDM4IDIyNi41MzkwNjIgMTcyLjE0ODQzOCBDIDIyNy4yNDYwOTQgMTcyLjE0ODQzOCAyMjcuOTM3NSAxNzIuMjkyOTY5IDIyOC42MTcxODggMTcyLjU3ODEyNSAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyNTUuMTQwNjI1IDIxMS4wMDc4MTIgTCAyMjUuMjUzOTA2IDIxMS4wMDc4MTIgTCAyMjUuMjUzOTA2IDIwNy42MDkzNzUgTCAyNTUuMTQwNjI1IDIwNy42MDkzNzUgWiBNIDI1NS4xNDA2MjUgMjExLjAwNzgxMiAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMjguMTk5NzY4JSwgNDkuNzk4NTg0JSwgMzIuMTk5MDk3JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA1MC4xMDU0NjkgMTI5LjUzMTI1IEwgNTguNzE4NzUgMTI5LjUzMTI1IEwgNzQuMzk4NDM4IDExMy44NDc2NTYgTCA2NS41NjY0MDYgMTE0LjA2NjQwNiBaIE0gNTAuMTA1NDY5IDEyOS41MzEyNSAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoMjguMTk5NzY4JSwgNDkuNzk4NTg0JSwgMzIuMTk5MDk3JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAxMzEuMzMyMDMxIDIzNC4wMDM5MDYgTCAxMzEuMzMyMDMxIDIyNS4zOTg0MzggTCAxMTUuNjQ0NTMxIDIwOS43MTA5MzggTCAxMTUuODYzMjgxIDIxOC41MzkwNjIgWiBNIDEzMS4zMzIwMzEgMjM0LjAwMzkwNiAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoNTYuNDk4NzE4JSwgNzQuMDk5NzMxJSwgNjUuNDk5ODc4JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAxMTQuNjAxNTYyIDczLjY0ODQzOCBMIDEzMC41MDc4MTIgNTcuNzQyMTg4IEwgMTMwLjczMDQ2OSAxMjkuNzQ2MDk0IEwgNTguNzE4NzUgMTI5LjUzMTI1IEwgNzQuMTgzNTk0IDExNC4wNjY0MDYgTCAxNC41MzkwNjIgNTQuNDM3NSBMIDU0Ljk1MzEyNSAxNC4wMTE3MTkgWiBNIDExNC42MDE1NjIgNzMuNjQ4NDM4ICIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYigyOC4xOTk3NjglLCA0OS43OTg1ODQlLCAzMi4xOTkwOTclKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDUuODE2NDA2IDU0LjMyMDMxMiBMIDE0LjQzMzU5NCA1NC4xMDE1NjIgTCA3NC4yODkwNjIgMTEzLjk2MDkzOCBMIDY1LjY2Nzk2OSAxMTMuOTYwOTM4IFogTSA1LjgxNjQwNiA1NC4zMjAzMTIgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDQxLjE5ODczJSwgNjMuMDk5NjclLCA1MC45OTk0NTElKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDUuNzA3MDMxIDU0LjIxODc1IEwgMTQuNzUzOTA2IDU0LjIxODc1IEwgNTQuOTYwOTM4IDE0LjAxNTYyNSBMIDQ1LjY4MzU5NCAxNC4yMjY1NjIgWiBNIDUuNzA3MDMxIDU0LjIxODc1ICIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYigyOC4xOTk3NjglLCA0OS43OTg1ODQlLCAzMi4xOTkwOTclKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDEyMiA1Ny42MzY3MTkgTCAxMzAuNTA3ODEyIDU3Ljc0MjE4OCBMIDExNC42MDE1NjIgNzMuNjQ4NDM4IEwgMTEwLjI4OTA2MiA2OS4zMzU5MzggWiBNIDEyMiA1Ny42MzY3MTkgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDc0LjQ5OTUxMiUsIDg1LjA5OTc5MiUsIDY4Ljk5ODcxOCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjE4LjM4MjgxMiAxMTMuNDA2MjUgTCAyMzQuMjk2ODc1IDEyOS4zMTY0MDYgTCAxNjIuMzkwNjI1IDEyOS40MTc5NjkgTCAxNjIuMzk0NTMxIDU3LjQyMTg3NSBMIDE3OC4wNzgxMjUgNzMuMDk3NjU2IEwgMjM3LjgxNjQwNiAxMy4zMzU5MzggTCAyNzguMTM2NzE5IDUzLjY1NjI1IFogTSAyMTguMzgyODEyIDExMy40MDYyNSAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoNTIuMTk4NzkyJSwgNzMuMjk4NjQ1JSwgMzkuOTk5MzklKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDI0MS41NzQyMTkgOS41OTM3NSBMIDI4MS44OTQ1MzEgNDkuOTA2MjUgTCAyNzguMDIzNDM4IDUzLjc1NzgxMiBMIDIzNy43MTQ4NDQgMTMuNDU3MDMxIFogTSAyNDEuNTc0MjE5IDkuNTkzNzUgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDY0LjI5OTAxMSUsIDc5LjU5ODk5OSUsIDU2Ljg5ODQ5OSUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMTY3LjY5NTMxMiA1MS44OTA2MjUgTCAxNjIuMTUyMzQ0IDU3LjE5MTQwNiBMIDE3OC4wNzQyMTkgNzMuMDk3NjU2IEwgMTgzLjQ4MDQ2OSA2Ny42ODM1OTQgWiBNIDE2Ny42OTUzMTIgNTEuODkwNjI1ICIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9InJnYig2NC4yOTkwMTElLCA3OS41OTg5OTklLCA1Ni44OTg0OTklKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDIyMy43OTI5NjkgMTA3Ljk5MjE4OCBMIDIxOC4zODY3MTkgMTEzLjQwNjI1IEwgMjM0LjUxNTYyNSAxMjkuNTMxMjUgTCAyMzkuOTE3OTY5IDEyNC4xMTcxODggWiBNIDIyMy43OTI5NjkgMTA3Ljk5MjE4OCAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJyZ2IoNTYuNDk4NzE4JSwgNzQuMDk5NzMxJSwgNjUuNDk5ODc4JSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA3NS40NDE0MDYgMTY5LjUwMzkwNiBMIDU5LjUzOTA2MiAxNTMuNTk3NjU2IEwgMTMxLjU0Njg3NSAxNTMuMzg2NzE5IEwgMTMxLjMyODEyNSAyMjUuMzk4NDM4IEwgMTE1Ljg2MzI4MSAyMDkuOTI5Njg4IEwgNTYuMjQyMTg4IDI2OS41NzAzMTIgTCAxNS43ODkwNjIgMjI5LjE1MjM0NCBaIE0gNzUuNDQxNDA2IDE2OS41MDM5MDYgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDI4LjE5OTc2OCUsIDQ5Ljc5ODU4NCUsIDMyLjE5OTA5NyUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNTYuMTEzMjgxIDI3OC4yOTI5NjkgTCA1NS44OTQ1MzEgMjY5LjY3OTY4OCBMIDExNS43NjU2MjUgMjA5LjgyMDMxMiBMIDExNS43NjU2MjUgMjE4LjQ0MTQwNiBaIE0gNTYuMTEzMjgxIDI3OC4yOTI5NjkgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDQxLjE5ODczJSwgNjMuMDk5NjclLCA1MC45OTk0NTElKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDU2LjAwNzgxMiAyNzguNDA2MjUgTCA1Ni4wMDc4MTIgMjY5LjM1MTU2MiBMIDE1LjgwMDc4MSAyMjkuMTQ0NTMxIEwgMTYuMDI3MzQ0IDIzOC40Mjk2ODggWiBNIDU2LjAwNzgxMiAyNzguNDA2MjUgIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0icmdiKDI4LjE5OTc2OCUsIDQ5Ljc5ODU4NCUsIDMyLjE5OTA5NyUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNTkuNDI5Njg4IDE2Mi4wOTc2NTYgTCA1OS41NDI5NjkgMTUzLjU5NzY1NiBMIDc1LjQ0MTQwNiAxNjkuNTAzOTA2IEwgNzEuMTI4OTA2IDE3My44MTI1IFogTSA1OS40Mjk2ODggMTYyLjA5NzY1NiAiLz4KPC9zdmc+Cg==" alt="Ser Salud"></div></div>
+    <div class="titulo">
+      <h1>¡Ahora, a jugar!</h1>
+      <p>Elige un juego y descubre cuánto sabes sobre Ser Salud.</p>
+    </div>
+    <div class="tarjetas" id="tarjetas">
+      <button class="tarjeta" data-juego="sopa">
+        <div class="ico" style="background:var(--menta-cl)"><div class="mini-sopa" aria-hidden="true"><span class="h">S</span><span>R</span><span>T</span><span>E</span><span>B</span><span class="h">A</span><span>O</span><span>N</span><span>M</span><span>U</span><span class="h">L</span><span>I</span><span>C</span><span>V</span><span>E</span><span class="h">U</span></div></div>
+        <div><h2>Sopa de letras</h2><p>Encuentra las 8 palabras de Ser Salud antes de que se acabe el tiempo.</p></div>
+        <div class="ir"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+      <button class="tarjeta" data-juego="trivia">
+        <div class="ico" style="background:var(--lima-cl)"><svg width="120" height="120" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#2B5535" stroke-width="2"/><path d="M9.2 9.2a2.9 2.9 0 1 1 4 2.7c-.8.4-1.2 1-1.2 1.9v.4" fill="none" stroke="#2B5535" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.2" fill="#2B5535"/></svg></div>
+        <div><h2>Trivia Ser Salud</h2><p>5 preguntas rápidas sobre la empresa y sus servicios. Mientras más rápido respondas, más puntos.</p></div>
+        <div class="ir"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+    </div>
+    <div class="abajo"><button class="btn sec" id="btnSinJugar">Continuar sin jugar</button></div>
+  </section>
+
+  <!-- ================= INSTRUCCIONES DEL JUEGO ================= -->
+  <section class="screen" id="intro">
+    <div class="ico" id="introIco"></div>
+    <h1 id="introTitulo"></h1>
+    <p id="introTexto"></p>
+    <div class="reglas" id="introReglas"></div>
+    <button class="btn grande" id="btnEmpezar" style="width:640px">¡EMPEZAR!</button>
+  </section>
+
+  <!-- ================= SOPA ================= -->
+  <section class="screen" id="sopa">
+    <div class="barra">
+      <div class="marcador">
+        <div class="dato" id="sopaRelojBox"><span class="k">Tiempo</span><span class="v" id="sopaReloj">2:30</span></div>
+        <div class="dato"><span class="k">Palabras</span><span class="v" id="sopaCuenta">0/8</span></div>
+      </div>
+    </div>
+    <div class="titulo">
+      <h1>Encuentra las 8 palabras</h1>
+      <p>Desliza el dedo sobre la palabra, o toca la primera y la última letra.</p>
+    </div>
+    <div class="tablero" id="tablero"></div>
+    <div class="lista-pal" id="listaPal"></div>
+    <div class="abajo"><button class="btn sec chico" data-accion="terminar-sopa">Terminar juego</button></div>
+    <div class="toast" id="toast">¡Muy bien!</div>
+  </section>
+
+  <!-- ================= TRIVIA ================= -->
+  <section class="screen" id="trivia">
+    <div class="barra">
+      <div class="marcador">
+        <div class="dato"><span class="k">Pregunta</span><span class="v" id="trivN">1/5</span></div>
+        <div class="dato"><span class="k">Puntos</span><span class="v" id="trivPts">0</span></div>
+      </div>
+    </div>
+    <div class="puntos-preg" id="trivPuntos"></div>
+    <div class="tiempo" id="trivTiempo"><div></div></div>
+    <div class="pregunta"><span class="n" id="trivEtiqueta">Pregunta 1</span><h2 id="trivPreg"></h2></div>
+    <div class="opciones" id="trivOps"></div>
+    <div class="explica" id="trivExplica">
+      <svg width="70" height="70" viewBox="0 0 24 24" style="flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#D5E9DF"/><path d="M12 7.5v.2M12 11v6" stroke="#2B5535" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <div class="t" id="trivDato"></div>
+    </div>
+    <div class="abajo"><button class="btn" id="btnSiguiente" style="width:100%;display:none">Siguiente</button></div>
+  </section>
+
+  <!-- ================= FIN DEL JUEGO ================= -->
+  <section class="screen" id="juegoFin">
+    <div class="medalla"><span class="v" id="jfPts">0</span><span class="k">PUNTOS</span></div>
+    <h1 id="jfTitulo">¡Bien jugado!</h1>
+    <p class="det" id="jfDet"></p>
+    <button class="btn" id="btnJuegoFin">Continuar</button>
+    <div class="auto" id="jfAuto"></div>
   </section>
 
   <!-- ================= ADMIN ================= -->
@@ -451,6 +616,40 @@ const NIVELES = [
    cierre:'Una buena gestión de salud siempre tiene espacio para evolucionar.'}
 ];
 
+
+/* ============================================================
+   JUEGOS · CONTENIDO SOBRE SER SALUD (editable)
+   Palabras: máximo 12 letras, sin tildes. La primera siempre entra.
+   Trivia: c = índice de la respuesta correcta; d = dato que se muestra.
+   ============================================================ */
+const PALABRAS = [
+  ['SERSALUD','Ser Salud'],['OCUPACIONAL','Ocupacional'],['PREVENCION','Prevención'],['BIENESTAR','Bienestar'],
+  ['DISPENSARIO','Dispensario'],['SEGURIDAD','Seguridad'],['HIGIENE','Higiene'],['ERGONOMIA','Ergonomía'],
+  ['WELLNESS','Wellness'],['INTEGRIDAD','Integridad'],['CALIDAD','Calidad'],['RESPETO','Respeto'],
+  ['COMPROMISO','Compromiso'],['INNOVACION','Innovación'],['VACUNACION','Vacunación'],['NUTRICION','Nutrición'],
+  ['PSICOLOGIA','Psicología'],['EQUIPO','Equipo'],['SALUD','Salud'],['LINEAAMIGA','Línea Amiga']
+];
+const PALABRAS_POR_JUEGO = 8;
+const SOPA_SEGUNDOS = 150;
+
+const PREGUNTAS_TRIVIA = [
+  {p:'¿Desde qué año Ser Salud acompaña a las empresas dominicanas en salud ocupacional?', o:['2001','2010','2015','2020'], c:0, d:'Ser Salud fue fundada el 25 de octubre de 2001 en Santo Domingo: más de 20 años como empresa pionera y líder en salud ocupacional.'},
+  {p:'¿Qué significan las siglas EMO en los servicios de Ser Salud?', o:['Evaluación Médica Ocupacional','Equipo Médico Operativo','Emergencia Médica Obligatoria','Examen Mensual Odontológico'], c:0, d:'Las EMO son evaluaciones médicas de ingreso, periódicas, de egreso, post-incapacidad y por reubicación de puesto.'},
+  {p:'¿Qué es la Línea Amiga de Ser Salud?', o:['Una línea de ayuda psicológica 24/7 sin costo para el colaborador','Un servicio de mensajería','Una línea de transporte de personal','Un chat de ventas'], c:0, d:'Línea Amiga es un call center psicológico seguro, 24/7 y a nivel nacional, atendido por profesionales de la psicología.'},
+  {p:'¿Cuál de estos NO es uno de los valores de Ser Salud?', o:['Rapidez','Integridad','Trabajo en equipo','Innovación'], c:0, d:'Los valores de Ser Salud son integridad, calidad, trabajo en equipo, respeto, compromiso e innovación.'},
+  {p:'¿Qué es SERSALUDABLE 360?', o:['Un programa personalizado de nutrición y entrenamiento físico','Un seguro médico','Una app de citas médicas','Un curso de primeros auxilios'], c:0, d:'SERSALUDABLE 360 es el programa de salud y bienestar de Ser Salud con nutrición y entrenamiento físico personalizados.'},
+  {p:'¿Qué reglamento dominicano regula la seguridad y salud en el trabajo?', o:['Decreto 522-06','Ley 172-13','Decreto 100-20','Ley 16-92'], c:0, d:'El Reglamento de Seguridad y Salud en el Trabajo (Decreto 522-06, de octubre de 2006) avala los servicios que ofrece Ser Salud.'},
+  {p:'¿Qué evaluación médica se realiza cuando un colaborador regresa después de una incapacidad?', o:['Post-incapacidad (reintegro)','Pre-empleo','De egreso','Basal'], c:0, d:'La evaluación post-incapacidad verifica que el colaborador puede reintegrarse con seguridad a su puesto.'},
+  {p:'¿Cuál de estos estudios forma parte de la higiene industrial que realiza Ser Salud?', o:['Medición de ruido e iluminación','Auditoría contable','Encuesta de clima laboral','Prueba de manejo'], c:0, d:'Ser Salud realiza estudios de ruido, iluminación, calidad de aire, aguas residuales, suelo y evaluación de EPP.'},
+  {p:'Ser Salud puede administrar el dispensario médico de tu empresa con personal de…', o:['Medicina, enfermería, psicología, odontología y nutrición','Solo medicina general','Solo enfermería','Solo personal administrativo'], c:0, d:'El outsourcing de salud de Ser Salud incluye medicina general y especializada, enfermería, psicología, odontología, nutrición y personal administrativo.'},
+  {p:'¿Qué comité ayuda Ser Salud a conformar en las empresas como parte de la seguridad industrial?', o:['Comité Mixto de Higiene y Seguridad','Comité de Fiestas','Comité de Compras','Comité Electoral'], c:0, d:'La conformación del Comité Mixto de Higiene y Seguridad y la formación de brigadas contra incendio son parte de sus programas.'},
+  {p:'¿Cómo se llama el programa de Ser Salud para acompañar a colaboradores con enfermedades crónicas?', o:['Club de Crónicos','Plan Vital','Ruta Saludable','Red Activa'], c:0, d:'La Administración de Club de Crónicos es parte de los servicios de promoción y prevención (wellness corporativo).'},
+  {p:'¿A qué lugares del país llega Ser Salud con sus servicios?', o:['A todas las localidades, a nivel nacional','Solo Santo Domingo','Solo Santiago','Solo zonas francas'], c:0, d:'Ser Salud se traslada a nivel nacional hasta todas las localidades de la empresa, con horarios flexibles.'}
+];
+const PREGUNTAS_POR_JUEGO = 5;
+const TRIVIA_SEGUNDOS = 20;
+const JUEGO_FIN_SEG = 25;       // tiempo en la pantalla de fin del juego
+
 const INACTIVIDAD_SEG = 90;     // vuelve al inicio si nadie toca la pantalla
 const RESULTADO_SEG = 60;       // tiempo máximo en la pantalla de resultado
 const FINAL_SEG = 25;           // tiempo en la pantalla final
@@ -468,6 +667,7 @@ let registros = leer(K_DATOS, []);
 const $ = (s, r) => (r||document).querySelector(s);
 const $$ = (s, r) => Array.from((r||document).querySelectorAll(s));
 const pad2 = n => String(n).padStart(2,'0');
+function barajar(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function ahora(){ const d = new Date(); return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())+' '+pad2(d.getHours())+':'+pad2(d.getMinutes())+':'+pad2(d.getSeconds()); }
 function hoy(){ return ahora().slice(0,10); }
 
@@ -501,6 +701,10 @@ setInterval(() => {
     const quedan = Math.max(0, Math.ceil(RESULTADO_SEG - inactivo));
     $('#resAuto').textContent = 'Volviendo al inicio en ' + quedan + ' s';
     if (quedan <= 0) irInicio();
+  } else if (pantalla === 'juegoFin'){
+    const quedan = Math.max(0, Math.ceil(JUEGO_FIN_SEG - inactivo));
+    $('#jfAuto').textContent = 'Volviendo al inicio en ' + quedan + ' s';
+    if (quedan <= 0) irInicio();
   } else if (pantalla === 'final'){
     const quedan = Math.max(0, Math.ceil(FINAL_SEG - inactivo));
     $('#finalAuto').textContent = 'Volviendo al inicio en ' + quedan + ' s';
@@ -512,7 +716,7 @@ setInterval(() => {
 
 let actual = null;
 
-function irInicio(){ actual = null; limpiarFormulario(); mostrar('inicio'); }
+function irInicio(){ pararJuegos(); actual = null; limpiarFormulario(); mostrar('inicio'); }
 function abandonar(){
   if (actual && !actual.terminado){ actual.completo = 'No'; actual.terminado = true; marcarCambio(actual); }
   irInicio();
@@ -719,7 +923,7 @@ $('#btnSigPaso').addEventListener('click', () => {
     correo: form.correo.trim(), telefono: form.telefono,
     acepta: acepta ? 'Sí' : 'No',
     r1:'', r2:'', r3:'', r4:'', r5:'',
-    puntaje:'', nivel:'', areas:'', asesoria:'No', correoResultado:'No',
+    puntaje:'', nivel:'', areas:'', asesoria:'No', correoResultado:'No', juego:'', juegoPts:'', juegoDetalle:'',
     completo:'No', equipo: cfg.equipo, terminado:false, sync:false
   };
   registros.push(actual); guardarDatos(); sincronizar();
@@ -827,7 +1031,266 @@ $('#btnEnviarCorreo').addEventListener('click', () => {
   be.textContent = '✓ Te lo enviaremos a ' + actual.correo;
   be.disabled = true; be.style.opacity = '.7';
 });
-$('#btnIrFinal').addEventListener('click', abrirFinal);
+$('#btnIrFinal').addEventListener('click', abrirJuegos);
+
+/* ============================================================
+   INSTRUCCIONES
+   ============================================================ */
+function abrirIntro(){
+  if (juegoSel === 'sopa'){
+    $('#introIco').innerHTML = $('#tarjetas [data-juego=sopa] .ico').innerHTML;
+    $('#introIco').style.background = 'var(--menta-cl)';
+    $('#introTitulo').textContent = 'Sopa de letras';
+    $('#introTexto').textContent = 'Encuentra las palabras escondidas. Pueden estar en horizontal, vertical o diagonal.';
+    $('#introReglas').innerHTML = '<div class="regla">' + PALABRAS_POR_JUEGO + ' palabras</div><div class="regla">' + Math.floor(SOPA_SEGUNDOS/60) + ':' + pad2(SOPA_SEGUNDOS%60) + ' minutos</div>';
+  } else {
+    $('#introIco').innerHTML = $('#tarjetas [data-juego=trivia] .ico').innerHTML;
+    $('#introIco').style.background = 'var(--lima-cl)';
+    $('#introTitulo').textContent = 'Trivia Ser Salud';
+    $('#introTexto').textContent = 'Responde ' + PREGUNTAS_POR_JUEGO + ' preguntas sobre Ser Salud y sus servicios. Cada respuesta correcta suma 100 puntos, más un bono por rapidez.';
+    $('#introReglas').innerHTML = '<div class="regla">' + PREGUNTAS_POR_JUEGO + ' preguntas</div><div class="regla">' + TRIVIA_SEGUNDOS + ' s por pregunta</div>';
+  }
+  $('#introTitulo').insertAdjacentText('afterbegin', '');
+  mostrar('intro');
+}
+$('#btnEmpezar').addEventListener('click', () => { if (juegoSel === 'sopa') iniciarSopa(); else iniciarTrivia(); });
+
+/* ============================================================
+   SOPA DE LETRAS
+   ============================================================ */
+const NS = 12, DIRS = [[0,1],[1,0],[1,1],[-1,1]];
+let sopa = null, relojSopa = null, arrastre = null, ancla = null;
+
+function generarSopa(){
+  for (let intento = 0; intento < 60; intento++){
+    const elegidas = [PALABRAS[0]].concat(barajar(PALABRAS.slice(1)).slice(0, PALABRAS_POR_JUEGO - 1));
+    const g = Array.from({length:NS}, () => Array(NS).fill(''));
+    const orden = elegidas.slice().sort((a,b) => b[0].length - a[0].length);
+    let ok = true;
+    for (const [w] of orden){
+      let puesta = false;
+      for (let t = 0; t < 300 && !puesta; t++){
+        const [dr, dc] = DIRS[Math.floor(Math.random()*DIRS.length)];
+        const r0 = Math.floor(Math.random()*NS), c0 = Math.floor(Math.random()*NS);
+        const r1 = r0 + dr*(w.length-1), c1 = c0 + dc*(w.length-1);
+        if (r1 < 0 || r1 >= NS || c1 < 0 || c1 >= NS) continue;
+        let cabe = true;
+        for (let i = 0; i < w.length; i++){ const ch = g[r0+dr*i][c0+dc*i]; if (ch && ch !== w[i]){ cabe = false; break; } }
+        if (!cabe) continue;
+        for (let i = 0; i < w.length; i++) g[r0+dr*i][c0+dc*i] = w[i];
+        puesta = true;
+      }
+      if (!puesta){ ok = false; break; }
+    }
+    if (!ok) continue;
+    const relleno = 'AAAEEEIIOOUUSSRRNNLLTTCCDDMMPBGVHFJZ';
+    for (let r = 0; r < NS; r++) for (let c = 0; c < NS; c++) if (!g[r][c]) g[r][c] = relleno[Math.floor(Math.random()*relleno.length)];
+    return {g, palabras: elegidas.map(([w, txt]) => ({w, txt, ok:false}))};
+  }
+  return null;
+}
+function iniciarSopa(){
+  sopa = generarSopa(); sopa.restante = SOPA_SEGUNDOS; sopa.inicio = Date.now(); sopa.color = 0;
+  arrastre = null; ancla = null;
+  const tb = $('#tablero'); tb.innerHTML = '';
+  for (let r = 0; r < NS; r++) for (let c = 0; c < NS; c++){
+    const d = document.createElement('div'); d.className = 'celda'; d.dataset.r = r; d.dataset.c = c; d.textContent = sopa.g[r][c]; tb.appendChild(d);
+  }
+  pintarLista(); pintarReloj();
+  mostrar('sopa');
+  clearInterval(relojSopa);
+  relojSopa = setInterval(() => { sopa.restante--; pintarReloj(); if (sopa.restante <= 0) finSopa(); }, 1000);
+}
+function pintarReloj(){
+  const s = Math.max(0, sopa.restante);
+  $('#sopaReloj').textContent = Math.floor(s/60) + ':' + pad2(s%60);
+  $('#sopaRelojBox').classList.toggle('alerta', s <= 20);
+  $('#sopaCuenta').textContent = sopa.palabras.filter(p => p.ok).length + '/' + sopa.palabras.length;
+}
+function pintarLista(){
+  const l = $('#listaPal'); l.innerHTML = '';
+  sopa.palabras.slice().sort((a,b) => a.txt.localeCompare(b.txt)).forEach(p => {
+    const d = document.createElement('div'); d.className = 'pal' + (p.ok ? ' ok' : '');
+    d.innerHTML = '<span class="bola">' + (p.ok ? '<svg width="26" height="26" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '') + '</span>';
+    d.appendChild(document.createTextNode(p.txt.toUpperCase()));
+    l.appendChild(d);
+  });
+}
+function celdaDe(e){
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  const c = el && el.closest ? el.closest('.celda') : null;
+  return c ? {r: +c.dataset.r, c: +c.dataset.c} : null;
+}
+function ajustar(a, p){
+  const dr = p.r - a.r, dc = p.c - a.c, ar = Math.abs(dr), ac = Math.abs(dc);
+  if (dr === 0 || dc === 0 || ar === ac) return p;
+  if (ar > 2*ac) return {r: p.r, c: a.c};
+  if (ac > 2*ar) return {r: a.r, c: p.c};
+  const m = Math.min(ar, ac), r = a.r + Math.sign(dr)*m, c = a.c + Math.sign(dc)*m;
+  return {r, c};
+}
+function enLinea(a, b){ const dr = b.r-a.r, dc = b.c-a.c; return dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc); }
+function celdasEntre(a, b){
+  const dr = Math.sign(b.r-a.r), dc = Math.sign(b.c-a.c), n = Math.max(Math.abs(b.r-a.r), Math.abs(b.c-a.c));
+  const out = []; for (let i = 0; i <= n; i++) out.push({r: a.r+dr*i, c: a.c+dc*i}); return out;
+}
+function celdaEl(p){ return $('#tablero').children[p.r*NS + p.c]; }
+function pintarSel(lista){
+  $$('#tablero .celda.sel').forEach(c => c.classList.remove('sel'));
+  $$('#tablero .celda.ancla').forEach(c => c.classList.remove('ancla'));
+  if (ancla) celdaEl(ancla).classList.add('ancla');
+  (lista || []).forEach(p => celdaEl(p).classList.add('sel'));
+}
+const tbSopa = $('#tablero');
+tbSopa.addEventListener('pointerdown', e => {
+  if (!sopa || sopa.fin) return;
+  const p = celdaDe(e); if (!p) return;
+  e.preventDefault();
+  try{ tbSopa.setPointerCapture(e.pointerId); }catch(_){}
+  if (ancla && !(ancla.r === p.r && ancla.c === p.c) && enLinea(ancla, p)){
+    const a = ancla; ancla = null; comprobar(a, p); return;
+  }
+  ancla = null;
+  arrastre = {a: p, b: p, movido: false};
+  pintarSel([p]);
+});
+tbSopa.addEventListener('pointermove', e => {
+  if (!arrastre) return;
+  const p = celdaDe(e); if (!p) return;
+  const s = ajustar(arrastre.a, p);
+  if (s.r < 0 || s.r >= NS || s.c < 0 || s.c >= NS) return;
+  if (s.r !== arrastre.a.r || s.c !== arrastre.a.c) arrastre.movido = true;
+  arrastre.b = s; pintarSel(celdasEntre(arrastre.a, s));
+});
+function soltar(){
+  if (!arrastre) return;
+  const a = arrastre;  arrastre = null;
+  if (!a.movido || (a.a.r === a.b.r && a.a.c === a.b.c)){ ancla = a.a; pintarSel([]); return; }
+  comprobar(a.a, a.b);
+}
+tbSopa.addEventListener('pointerup', soltar);
+tbSopa.addEventListener('pointercancel', () => { arrastre = null; pintarSel([]); });
+function comprobar(a, b){
+  const cs = celdasEntre(a, b);
+  const txt = cs.map(p => sopa.g[p.r][p.c]).join('');
+  const rev = txt.split('').reverse().join('');
+  const hit = sopa.palabras.find(p => !p.ok && (p.w === txt || p.w === rev));
+  if (hit){
+    hit.ok = true;
+    const k = 'h' + (sopa.color++ % 4);
+    cs.forEach(p => { const el = celdaEl(p); el.classList.remove('h0','h1','h2','h3'); el.classList.add(k); });
+    pintarSel([]); pintarLista(); pintarReloj();
+    aviso(sopa.palabras.every(p => p.ok) ? '¡Completaste la sopa!' : '¡' + hit.txt + '!');
+    if (sopa.palabras.every(p => p.ok)) setTimeout(finSopa, 900);
+  } else {
+    pintarSel(cs); setTimeout(() => pintarSel([]), 250);
+  }
+}
+let tAviso = null;
+function aviso(t){ const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(tAviso); tAviso = setTimeout(() => el.classList.remove('on'), 1100); }
+function finSopa(){
+  if (!sopa || sopa.fin) return;
+  sopa.fin = true; clearInterval(relojSopa);
+  const encontradas = sopa.palabras.filter(p => p.ok).length;
+  const completo = encontradas === sopa.palabras.length;
+  const usado = Math.min(SOPA_SEGUNDOS, Math.round((Date.now() - sopa.inicio)/1000));
+  const pts = encontradas*100 + (completo ? Math.max(0, SOPA_SEGUNDOS - usado)*2 : 0);
+  terminarPartida(pts, encontradas + ' de ' + sopa.palabras.length, usado, completo,
+    completo ? '¡Encontraste todas las palabras!' : 'Encontraste ' + encontradas + ' de ' + sopa.palabras.length + ' palabras');
+}
+
+/* ============================================================
+   TRIVIA
+   ============================================================ */
+let triv = null, relojTriv = null;
+function iniciarTrivia(){
+  triv = {lista: barajar(PREGUNTAS_TRIVIA).slice(0, PREGUNTAS_POR_JUEGO), i: 0, pts: 0, bien: 0, res: [], inicio: Date.now()};
+  mostrar('trivia'); preguntaTriv();
+}
+function preguntaTriv(){
+  const q = triv.lista[triv.i];
+  triv.resp = false; triv.t0 = Date.now();
+  $('#trivN').textContent = (triv.i+1) + '/' + triv.lista.length;
+  $('#trivPts').textContent = triv.pts;
+  $('#trivEtiqueta').textContent = 'Pregunta ' + (triv.i+1);
+  $('#trivPreg').textContent = q.p;
+  $('#trivExplica').classList.remove('on');
+  $('#btnSiguiente').style.display = 'none';
+  const pp = $('#trivPuntos'); pp.innerHTML = '';
+  triv.lista.forEach((_, i) => { const s = document.createElement('span'); s.className = i < triv.i ? (triv.res[i] ? 'bien' : 'mal') : (i === triv.i ? 'act' : ''); pp.appendChild(s); });
+  const ops = barajar(q.o.map((t, k) => ({t, ok: k === q.c})));
+  const box = $('#trivOps'); box.innerHTML = '';
+  ops.forEach((o, k) => {
+    const b = document.createElement('button'); b.className = 'op'; b.dataset.ok = o.ok ? '1' : '0';
+    b.innerHTML = '<span class="l">' + 'ABCD'[k] + '</span>';
+    b.appendChild(document.createTextNode(o.t));
+    b.addEventListener('click', () => responderTriv(b));
+    box.appendChild(b);
+  });
+  const barra = $('#trivTiempo div'); barra.style.width = '100%';
+  clearInterval(relojTriv);
+  relojTriv = setInterval(() => {
+    const q = 1 - (Date.now() - triv.t0)/(TRIVIA_SEGUNDOS*1000);
+    barra.style.width = Math.max(0, q*100) + '%';
+    $('#trivTiempo').classList.toggle('poco', q < .25);
+    if (q <= 0) responderTriv(null);
+  }, 100);
+}
+function responderTriv(b){
+  if (triv.resp) return; triv.resp = true; clearInterval(relojTriv);
+  const ok = !!b && b.dataset.ok === '1';
+  const restante = Math.max(0, TRIVIA_SEGUNDOS - (Date.now() - triv.t0)/1000);
+  if (ok){ triv.bien++; triv.pts += 100 + Math.round(restante*5); }
+  triv.res.push(ok);
+  $$('#trivOps .op').forEach(o => {
+    if (o.dataset.ok === '1') o.classList.add('bien');
+    else if (o === b) o.classList.add('mal');
+    else o.classList.add('apagada');
+  });
+  $('#trivPts').textContent = triv.pts;
+  const q = triv.lista[triv.i];
+  $('#trivDato').innerHTML = '';
+  const tit = document.createElement('b'); tit.textContent = ok ? '¡Correcto!' : (b ? 'Casi…' : '¡Se acabó el tiempo!');
+  $('#trivDato').appendChild(tit); $('#trivDato').appendChild(document.createTextNode(q.d));
+  $('#trivExplica').classList.add('on');
+  const ult = triv.i >= triv.lista.length - 1;
+  $('#btnSiguiente').textContent = ult ? 'Ver mi resultado' : 'Siguiente';
+  $('#btnSiguiente').style.display = '';
+}
+$('#btnSiguiente').addEventListener('click', () => {
+  if (triv.i >= triv.lista.length - 1){
+    const usado = Math.round((Date.now() - triv.inicio)/1000);
+    terminarPartida(triv.pts, triv.bien + ' de ' + triv.lista.length, usado, true,
+      triv.bien + ' de ' + triv.lista.length + ' respuestas correctas');
+  } else { triv.i++; preguntaTriv(); }
+});
+
+/* ============================================================
+   FIN DE PARTIDA
+   ============================================================ */
+function pararJuegos(){ clearInterval(relojSopa); clearInterval(relojTriv); if (sopa) sopa.fin = true; }
+function terminarPartida(pts, aciertos, seg, completo, detalle){
+  pararJuegos();
+  if (actual){
+    actual.juego = juegoSel === 'sopa' ? 'Sopa de letras' : 'Trivia';
+    actual.juegoPts = pts; actual.juegoDetalle = detalle; actual.juegoTiempo = seg;
+    marcarCambio(actual);
+  }
+  $('#jfPts').textContent = pts;
+  $('#jfTitulo').textContent = completo && /todas|5 de 5/.test(detalle) ? '¡Excelente!' : '¡Bien jugado!';
+  $('#jfDet').textContent = detalle;
+  mostrar('juegoFin');
+}
+
+/* ============================================================
+   MENÚ DE JUEGOS (después del resultado de la evaluación)
+   ============================================================ */
+let juegoSel = null;
+function abrirJuegos(){ juegoSel = null; mostrar('juegos'); }
+$$('#tarjetas .tarjeta').forEach(t => t.addEventListener('click', () => { juegoSel = t.dataset.juego; abrirIntro(); }));
+$('#btnSinJugar').addEventListener('click', () => { if (actual){ actual.juego = 'No jugó'; marcarCambio(actual); } abrirFinal(); });
+$('#btnJuegoFin').addEventListener('click', abrirFinal);
+$$('[data-accion=terminar-sopa]').forEach(b => b.addEventListener('click', finSopa));
 
 /* ============================================================
    FINAL
@@ -877,7 +1340,7 @@ addEventListener('online', () => { sincronizar(); pintarAdmin(); });
 addEventListener('offline', pintarAdmin);
 
 function descargarExcel(){
-  const cols = [['fecha','Fecha y hora'],['nombre','Nombre y apellido'],['cargo','Cargo'],['empresa','Empresa'],['sector','Sector económico'],['colaboradores','Colaboradores'],['correo','Correo'],['telefono','Teléfono'],['acepta','Autoriza contacto'],['r1','P1'],['r2','P2'],['r3','P3'],['r4','P4'],['r5','P5'],['puntaje','Puntuación (0-15)'],['nivel','Nivel'],['areas','Áreas de interés'],['asesoria','Solicita asesoría'],['correoResultado','Resultado por correo'],['completo','Completó'],['equipo','Kiosko'],['id','ID']];
+  const cols = [['fecha','Fecha y hora'],['nombre','Nombre y apellido'],['cargo','Cargo'],['empresa','Empresa'],['sector','Sector económico'],['colaboradores','Colaboradores'],['correo','Correo'],['telefono','Teléfono'],['acepta','Autoriza contacto'],['r1','P1'],['r2','P2'],['r3','P3'],['r4','P4'],['r5','P5'],['puntaje','Puntuación (0-15)'],['nivel','Nivel'],['areas','Áreas de interés'],['asesoria','Solicita asesoría'],['correoResultado','Resultado por correo'],['juego','Juego'],['juegoPts','Puntos del juego'],['juegoDetalle','Resultado del juego'],['completo','Completó'],['equipo','Kiosko'],['id','ID']];
   const esc = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
   const lineas = [cols.map(c => esc(c[1])).join(',')].concat(registros.map(r => cols.map(c => esc(r[c[0]])).join(',')));
   const nombre = 'evaluacion-sersalud-' + hoy() + '.csv';
