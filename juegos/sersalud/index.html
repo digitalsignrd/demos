@@ -388,7 +388,7 @@ html.nogap .mini-sopa{grid-gap:6px}
     </div>
     <div class="titulo">
       <h1>¿En qué áreas te gustaría fortalecer tu gestión este año?</h1>
-      <p>Selecciona máximo dos opciones.</p>
+      <p>Selecciona todas las que apliquen.</p>
     </div>
     <div class="lista-areas" id="listaAreas"></div>
     <div class="abajo"><button class="btn" id="btnVerResultado">Ver mi resultado</button></div>
@@ -577,7 +577,7 @@ const PREGUNTAS = [
    o:['Sí, de forma regular','Tenemos datos, pero no los analizamos sistemáticamente','No','No sé']}
 ];
 
-/* ÁREAS DE INTERÉS (máximo 2) — pregunta de cierre oficial, correo 30-oct-2026 */
+/* ÁREAS DE INTERÉS — pregunta de cierre oficial, correo 30-oct-2026 (sin límite de selección) */
 const AREAS = [
   'Salud ocupacional',
   'Cumplimiento normativo',
@@ -586,7 +586,7 @@ const AREAS = [
   'Atención médica en la empresa',
   'Análisis de datos de salud'
 ];
-const MAX_AREAS = 2;
+const MAX_AREAS = AREAS.length;   // sin límite (observación de Ser Salud, 3-nov)
 
 /* SECTORES ECONÓMICOS — oficiales de Ser Salud */
 const SECTORES = [
