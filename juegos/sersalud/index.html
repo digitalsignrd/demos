@@ -230,8 +230,8 @@ html.nogap .col22>*+*{margin-top:22px}
 #sopa .titulo{padding:34px 60px 0}
 #sopa .titulo h1{margin:0;font-size:64px;font-weight:800;color:var(--verde-osc);line-height:1}
 #sopa .titulo p{margin:12px 0 0;font-size:30px;color:var(--gris)}
-.tablero{margin:30px auto 0;display:grid;grid-template-columns:repeat(12,76px);gap:4px;padding:16px;background:#fff;border-radius:36px;border:4px solid var(--linea);touch-action:none}
-.celda{width:76px;height:76px;display:flex;align-items:center;justify-content:center;font-size:46px;font-weight:700;color:var(--tinta);border-radius:16px;transition:background .12s}
+.tablero{margin:30px auto 0;display:grid;grid-template-columns:repeat(14,60px);gap:4px;padding:16px;background:#fff;border-radius:36px;border:4px solid var(--linea);touch-action:none}
+.celda{width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:700;color:var(--tinta);border-radius:16px;transition:background .12s}
 .celda.sel{background:var(--verde);color:#fff}
 .celda.ancla{background:var(--lima);color:#fff;box-shadow:0 0 0 4px var(--verde-osc) inset}
 .celda.h0{background:#CFE6C0}
@@ -240,8 +240,8 @@ html.nogap .col22>*+*{margin-top:22px}
 .celda.h3{background:#BFDCC9}
 .celda.h0,.celda.h1,.celda.h2,.celda.h3{color:var(--verde-osc)}
 .celda.sel.h0,.celda.sel.h1,.celda.sel.h2,.celda.sel.h3{background:var(--verde);color:#fff}
-.lista-pal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;padding:34px 70px 0}
-.pal{display:flex;align-items:center;gap:18px;font-size:42px;font-weight:600;color:var(--tinta)}
+.lista-pal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;padding:26px 70px 0}
+.pal{display:flex;align-items:center;gap:18px;font-size:36px;font-weight:600;color:var(--tinta)}
 .pal .bola{width:44px;height:44px;border-radius:50%;border:4px solid var(--linea);flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .pal.ok{color:#7C8E82;text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:var(--verde)}
 .pal.ok .bola{background:var(--verde);border-color:var(--verde)}
@@ -436,16 +436,10 @@ html.nogap .mini-sopa{grid-gap:6px}
     <div class="tarjetas" id="tarjetas">
       <button class="tarjeta" data-juego="sopa">
         <div class="ico" style="background:var(--menta-cl)"><div class="mini-sopa" aria-hidden="true"><span class="h">S</span><span>R</span><span>T</span><span>E</span><span>B</span><span class="h">A</span><span>O</span><span>N</span><span>M</span><span>U</span><span class="h">L</span><span>I</span><span>C</span><span>V</span><span>E</span><span class="h">U</span></div></div>
-        <div><h2>Sopa de letras</h2><p>Encuentra las 8 palabras de Ser Salud antes de que se acabe el tiempo.</p></div>
-        <div class="ir"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </button>
-      <button class="tarjeta" data-juego="trivia">
-        <div class="ico" style="background:var(--lima-cl)"><svg width="120" height="120" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#2B5535" stroke-width="2"/><path d="M9.2 9.2a2.9 2.9 0 1 1 4 2.7c-.8.4-1.2 1-1.2 1.9v.4" fill="none" stroke="#2B5535" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.2" fill="#2B5535"/></svg></div>
-        <div><h2>Trivia Ser Salud</h2><p>5 preguntas rápidas sobre la empresa y sus servicios. Mientras más rápido respondas, más puntos.</p></div>
+        <div><h2>Sopa de letras</h2><p>Encuentra las 10 palabras de Ser Salud escondidas antes de que se acabe el tiempo.</p></div>
         <div class="ir"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </button>
     </div>
-    <div class="abajo"><button class="btn sec" id="btnSinJugar">Continuar sin jugar</button></div>
   </section>
 
   <!-- ================= INSTRUCCIONES DEL JUEGO ================= -->
@@ -455,18 +449,19 @@ html.nogap .mini-sopa{grid-gap:6px}
     <p id="introTexto"></p>
     <div class="reglas" id="introReglas"></div>
     <button class="btn grande" id="btnEmpezar" style="width:640px">¡EMPEZAR!</button>
+    <button class="btn sec" id="btnSinJugar" style="width:640px;margin-top:28px">Continuar sin jugar</button>
   </section>
 
   <!-- ================= SOPA ================= -->
   <section class="screen" id="sopa">
     <div class="barra">
       <div class="marcador">
-        <div class="dato" id="sopaRelojBox"><span class="k">Tiempo</span><span class="v" id="sopaReloj">2:30</span></div>
-        <div class="dato"><span class="k">Palabras</span><span class="v" id="sopaCuenta">0/8</span></div>
+        <div class="dato" id="sopaRelojBox"><span class="k">Tiempo</span><span class="v" id="sopaReloj">3:00</span></div>
+        <div class="dato"><span class="k">Palabras</span><span class="v" id="sopaCuenta">0/10</span></div>
       </div>
     </div>
     <div class="titulo">
-      <h1>Encuentra las 8 palabras</h1>
+      <h1>Encuentra las 10 palabras</h1>
       <p>Desliza el dedo sobre la palabra, o toca la primera y la última letra.</p>
     </div>
     <div class="tablero" id="tablero"></div>
@@ -627,10 +622,14 @@ const PALABRAS = [
   ['DISPENSARIO','Dispensario'],['SEGURIDAD','Seguridad'],['HIGIENE','Higiene'],['ERGONOMIA','Ergonomía'],
   ['WELLNESS','Wellness'],['INTEGRIDAD','Integridad'],['CALIDAD','Calidad'],['RESPETO','Respeto'],
   ['COMPROMISO','Compromiso'],['INNOVACION','Innovación'],['VACUNACION','Vacunación'],['NUTRICION','Nutrición'],
-  ['PSICOLOGIA','Psicología'],['EQUIPO','Equipo'],['SALUD','Salud'],['LINEAAMIGA','Línea Amiga']
+  ['PSICOLOGIA','Psicología'],['LINEAAMIGA','Línea Amiga'],['SERSALUDABLE','Sersaludable'],['CLUBCRONICOS','Club Crónicos'],
+  ['ENFERMERIA','Enfermería'],['ODONTOLOGIA','Odontología'],['AUDIOMETRIA','Audiometría'],['ESPIROMETRIA','Espirometría'],
+  ['EVALUACION','Evaluación'],['REINTEGRO','Reintegro'],['BRIGADA','Brigada'],['EMPRESARIAL','Empresarial']
 ];
-const PALABRAS_POR_JUEGO = 8;
-const SOPA_SEGUNDOS = 150;
+/* Dificultad (Ser Salud, 4-nov: "más compleja"): tablero 14x14, 10 palabras (varias de 11-12 letras),
+   8 direcciones incluidas al revés, relleno con las mismas letras de las palabras, 3 minutos. */
+const PALABRAS_POR_JUEGO = 10;
+const SOPA_SEGUNDOS = 180;
 
 const PREGUNTAS_TRIVIA = [
   {p:'¿Desde qué año Ser Salud acompaña a las empresas dominicanas en salud ocupacional?', o:['2001','2010','2015','2020'], c:0, d:'Ser Salud fue fundada el 25 de octubre de 2001 en Santo Domingo: más de 20 años como empresa pionera y líder en salud ocupacional.'},
@@ -971,7 +970,7 @@ function responderEval(b, k, texto){
 }
 
 /* ============================================================
-   ÁREAS DE INTERÉS (máximo 2)
+   ÁREAS DE INTERÉS (sin límite)
    ============================================================ */
 let areasSel = [];
 function abrirAreas(){
@@ -1041,7 +1040,7 @@ function abrirIntro(){
     $('#introIco').innerHTML = $('#tarjetas [data-juego=sopa] .ico').innerHTML;
     $('#introIco').style.background = 'var(--menta-cl)';
     $('#introTitulo').textContent = 'Sopa de letras';
-    $('#introTexto').textContent = 'Encuentra las palabras escondidas. Pueden estar en horizontal, vertical o diagonal.';
+    $('#introTexto').textContent = 'Encuentra las palabras de Ser Salud escondidas en el tablero. Pueden estar en horizontal, vertical o diagonal, hacia adelante o al revés.';
     $('#introReglas').innerHTML = '<div class="regla">' + PALABRAS_POR_JUEGO + ' palabras</div><div class="regla">' + Math.floor(SOPA_SEGUNDOS/60) + ':' + pad2(SOPA_SEGUNDOS%60) + ' minutos</div>';
   } else {
     $('#introIco').innerHTML = $('#tarjetas [data-juego=trivia] .ico').innerHTML;
@@ -1053,12 +1052,12 @@ function abrirIntro(){
   $('#introTitulo').insertAdjacentText('afterbegin', '');
   mostrar('intro');
 }
-$('#btnEmpezar').addEventListener('click', () => { if (juegoSel === 'sopa') iniciarSopa(); else iniciarTrivia(); });
+$('#btnEmpezar').addEventListener('click', iniciarSopa);
 
 /* ============================================================
    SOPA DE LETRAS
    ============================================================ */
-const NS = 12, DIRS = [[0,1],[1,0],[1,1],[-1,1]];
+const NS = 14, DIRS = [[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]];
 let sopa = null, relojSopa = null, arrastre = null, ancla = null;
 
 function generarSopa(){
@@ -1083,7 +1082,8 @@ function generarSopa(){
       if (!puesta){ ok = false; break; }
     }
     if (!ok) continue;
-    const relleno = 'AAAEEEIIOOUUSSRRNNLLTTCCDDMMPBGVHFJZ';
+    // relleno con las letras de las propias palabras (más señuelos) y algo de variedad
+    const relleno = elegidas.map(([w]) => w).join('') + 'AEIOUSRNLTCDMPBGV';
     for (let r = 0; r < NS; r++) for (let c = 0; c < NS; c++) if (!g[r][c]) g[r][c] = relleno[Math.floor(Math.random()*relleno.length)];
     return {g, palabras: elegidas.map(([w, txt]) => ({w, txt, ok:false}))};
   }
@@ -1272,7 +1272,7 @@ function pararJuegos(){ clearInterval(relojSopa); clearInterval(relojTriv); if (
 function terminarPartida(pts, aciertos, seg, completo, detalle){
   pararJuegos();
   if (actual){
-    actual.juego = juegoSel === 'sopa' ? 'Sopa de letras' : 'Trivia';
+    actual.juego = 'Sopa de letras';
     actual.juegoPts = pts; actual.juegoDetalle = detalle; actual.juegoTiempo = seg;
     marcarCambio(actual);
   }
@@ -1286,7 +1286,7 @@ function terminarPartida(pts, aciertos, seg, completo, detalle){
    MENÚ DE JUEGOS (después del resultado de la evaluación)
    ============================================================ */
 let juegoSel = null;
-function abrirJuegos(){ juegoSel = null; mostrar('juegos'); }
+function abrirJuegos(){ juegoSel = 'sopa'; abrirIntro(); }   // un solo juego (Ser Salud, 4-nov): va directo a la sopa de letras
 $$('#tarjetas .tarjeta').forEach(t => t.addEventListener('click', () => { juegoSel = t.dataset.juego; abrirIntro(); }));
 $('#btnSinJugar').addEventListener('click', () => { if (actual){ actual.juego = 'No jugó'; marcarCambio(actual); } abrirFinal(); });
 $('#btnJuegoFin').addEventListener('click', abrirFinal);
