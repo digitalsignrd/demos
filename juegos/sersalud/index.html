@@ -51,11 +51,12 @@ button{font-family:inherit;color:inherit;cursor:pointer;-webkit-user-select:none
 .fila2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .campo{display:flex;flex-direction:column;gap:10px;text-align:left;background:none;border:none;padding:0}
 .campo .lbl{font-size:30px;font-weight:600;color:var(--gris);padding-left:6px}
-.campo .caja{height:112px;border-radius:26px;background:#fff;border:4px solid var(--linea);display:flex;align-items:center;padding:0 30px;font-size:42px;font-weight:500;color:var(--tinta);overflow:hidden;white-space:nowrap}
+.campo .caja{height:112px;touch-action:manipulation;cursor:text;border-radius:26px;background:#fff;border:4px solid var(--linea);display:flex;align-items:center;padding:0 30px;font-size:42px;font-weight:500;color:var(--tinta);overflow:hidden;white-space:nowrap}
 .campo .caja .ph{color:#9AAA9F}
 .campo.activo .caja{border-color:var(--verde);box-shadow:0 0 0 6px rgba(105,161,130,.25)}
 .campo.error .caja{border-color:var(--rojo);background:var(--rojo-cl)}
-.campo.activo .caja::after{content:"";width:4px;height:56px;background:var(--verde-osc);margin-left:3px;animation:parpadeo 1s steps(1) infinite}
+.campo .caja .ch{display:inline-block;white-space:pre}
+.campo .caja .cur{display:inline-block;width:4px;height:56px;background:var(--verde-osc);margin:0 1px;vertical-align:middle;animation:parpadeo 1s steps(1) infinite}
 @keyframes parpadeo{50%{opacity:0}}
 .grupo-lbl{font-size:34px;font-weight:700;color:var(--tinta);margin:6px 0 0;padding-left:4px}
 .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
@@ -72,14 +73,17 @@ button{font-family:inherit;color:inherit;cursor:pointer;-webkit-user-select:none
 #registro .accion .btn{flex:1}
 
 /* ---------- TECLADO ---------- */
-.teclado{margin-top:auto;background:#DCEAE0;padding:22px 20px 28px;display:flex;flex-direction:column;gap:12px}
-.teclado .fila{display:flex;gap:10px;justify-content:center}
-.tecla{flex:1;height:98px;border-radius:18px;border:none;background:#fff;font-size:42px;font-weight:600;color:var(--tinta);border-bottom:4px solid #B9CFC0;display:flex;align-items:center;justify-content:center;padding:0 6px;white-space:nowrap}
-.tecla:active{background:var(--menta-cl)}
+.teclado{margin-top:auto;background:#DCEAE0;padding:24px 20px 24px;display:flex;flex-direction:column;gap:14px;border-radius:0 0 0 0}
+#registro .teclado{margin-bottom:260px;border-radius:0}   /* Ser Salud (12-nov): el teclado quedaba muy abajo en el tótem */
+.teclado .fila{display:flex;gap:12px;justify-content:center}
+.tecla{flex:1;height:110px;border-radius:18px;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;border:none;background:#fff;font-size:42px;font-weight:600;color:var(--tinta);border-bottom:4px solid #B9CFC0;display:flex;align-items:center;justify-content:center;padding:0 6px;white-space:nowrap}
+.tecla:active,.tecla.pulsada{background:var(--menta-cl);transform:translateY(2px);border-bottom-width:2px}
+.tecla.flecha{font-size:40px;background:#C3D9CA}
 .tecla.esp{background:#C3D9CA;font-size:32px}
 .tecla.ok{background:var(--verde-osc);color:#fff;font-size:34px;border-bottom-color:#1A3A23}
 .tecla.on{background:var(--lima);color:#fff}
-.tecla.txt{font-size:30px}
+.tecla.txt{font-size:26px;padding:0 10px}
+.teclado .tecla.flecha{flex:1.4}
 .teclado.num .fila{gap:14px}
 .teclado.num .tecla{flex:0 0 300px;height:104px;font-size:52px}
 
@@ -736,10 +740,12 @@ const PASOS = [
   {campos:['correo','telefono'], titulo:'Datos de contacto'}
 ];
 let paso = 0, campoAct = 'nombre', acepta = false, tilde = false;
+let caret = 0;   // posición del cursor dentro del campo activo (Ser Salud, 12-nov)
+function caretFin(){ caret = campoAct ? form[campoAct].length : 0; }
 
 function limpiarFormulario(){
   Object.keys(form).forEach(k => form[k] = '');
-  acepta = false; tilde = false; paso = 0; campoAct = 'nombre';
+  acepta = false; tilde = false; paso = 0; campoAct = 'nombre'; caret = 0;
 }
 function abrirRegistro(){
   limpiarFormulario();
@@ -758,7 +764,7 @@ function pintarPaso(){
   $('#btnSigPaso').textContent = paso === 2 ? 'Comenzar evaluación' : 'Siguiente';
   $('#msgReg').textContent = '';
   campoAct = PASOS[paso].campos[0] || null;
-  tilde = false;
+  tilde = false; caretFin();
   pintarRegistro(); pintarTeclado();
 }
 function pintarChips(){
@@ -793,12 +799,34 @@ function pintarRegistro(){
     const f = c.dataset.campo, caja = $('.caja', c);
     c.classList.toggle('activo', f === campoAct);
     caja.innerHTML = '';
-    if (form[f]) caja.textContent = form[f];
-    else { const s = document.createElement('span'); s.className = 'ph'; s.textContent = PH[f]; if (f !== campoAct) caja.appendChild(s); }
+    if (f === campoAct){
+      const v = form[f], pos = Math.max(0, Math.min(caret, v.length));
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i <= v.length; i++){
+        if (i === pos){ const c = document.createElement('span'); c.className = 'cur'; frag.appendChild(c); }
+        if (i < v.length){ const ch = document.createElement('span'); ch.className = 'ch'; ch.dataset.i = i; ch.textContent = v[i]; frag.appendChild(ch); }
+      }
+      caja.appendChild(frag);
+      // mantener visible la zona del cursor si el texto es más largo que la caja
+      const cur = $('.cur', caja); if (cur && cur.offsetLeft > caja.clientWidth - 60) caja.scrollLeft = cur.offsetLeft - caja.clientWidth + 80; else caja.scrollLeft = 0;
+    } else if (form[f]) caja.textContent = form[f];
+    else { const s = document.createElement('span'); s.className = 'ph'; s.textContent = PH[f]; caja.appendChild(s); }
   });
   $('#acepto').classList.toggle('on', acepta);
 }
-$$('.campo').forEach(c => c.addEventListener('click', () => { campoAct = c.dataset.campo; c.classList.remove('error'); tilde = false; pintarRegistro(); pintarTeclado(); }));
+$$('.campo').forEach(c => c.addEventListener('pointerdown', e => {
+  const f = c.dataset.campo;
+  if (f !== campoAct){ campoAct = f; tilde = false; caretFin(); }
+  // posicionar el cursor según dónde se tocó
+  const caja = $('.caja', c), x = e.clientX;
+  const chs = $$('.ch', caja);
+  if (chs.length){
+    let pos = chs.length;
+    for (let i = 0; i < chs.length; i++){ const r = chs[i].getBoundingClientRect(); if (x < r.left + r.width/2){ pos = i; break; } }
+    caret = pos;
+  } else caret = 0;
+  c.classList.remove('error'); pintarRegistro(); pintarTeclado();
+}));
 $('#acepto').addEventListener('click', () => { acepta = !acepta; pintarRegistro(); });
 
 const ICO_BORRAR = '<svg width="46" height="46" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h11a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H9l-6-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9.5l5 5M17 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
@@ -814,9 +842,9 @@ let pintarTeclado = function(){
     t.classList.add('num');
     filas = [['1','2','3'],['4','5','6'],['7','8','9'],['BORRAR','0','SIG']];
   } else if (campoAct === 'correo'){
-    filas = [['1','2','3','4','5','6','7','8','9','0'],['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l','ñ'],['z','x','c','v','b','n','m','.','_','-','BORRAR'],['@','@gmail.com','@hotmail.com','@outlook.com','.com','SIG']];
+    filas = [['1','2','3','4','5','6','7','8','9','0'],['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l','ñ'],['z','x','c','v','b','n','m','.','_','-','BORRAR'],['@','@gmail.com','@hotmail.com','@outlook.com','IZQ','DER','SIG']];
   } else {
-    filas = [['Q','W','E','R','T','Y','U','I','O','P'],['A','S','D','F','G','H','J','K','L','Ñ'],['TILDE','Z','X','C','V','B','N','M','BORRAR'],['ESPACIO','SIG']];
+    filas = [['Q','W','E','R','T','Y','U','I','O','P'],['A','S','D','F','G','H','J','K','L','Ñ'],['TILDE','Z','X','C','V','B','N','M','BORRAR'],['IZQ','ESPACIO','DER','SIG']];
   }
   filas.forEach(f => {
     const row = document.createElement('div'); row.className = 'fila';
@@ -826,6 +854,7 @@ let pintarTeclado = function(){
       else if (k === 'SIG'){ b.textContent = sig; b.classList.add('ok'); if (campoAct !== 'telefono') b.style.flex = campoAct === 'correo' ? '1.4' : '2'; }
       else if (k === 'ESPACIO'){ b.textContent = 'Espacio'; b.classList.add('esp'); b.style.flex = '4'; }
       else if (k === 'TILDE'){ b.textContent = '´'; b.classList.add('esp'); if (tilde) b.classList.add('on'); b.setAttribute('aria-label','Tilde'); }
+      else if (k === 'IZQ' || k === 'DER'){ b.textContent = k === 'IZQ' ? '◀' : '▶'; b.classList.add('flecha'); b.setAttribute('aria-label', k === 'IZQ' ? 'Mover cursor a la izquierda' : 'Mover cursor a la derecha'); }
       else { b.textContent = k; if (k.length > 2){ b.classList.add('txt'); b.style.flex = '2'; } }
       row.appendChild(b);
     });
@@ -833,10 +862,21 @@ let pintarTeclado = function(){
   });
 };
 const ACENTOS = {A:'Á',E:'É',I:'Í',O:'Ó',U:'Ú'};
-$('#teclado').addEventListener('click', e => {
+/* Las teclas responden al primer contacto (pointerdown), no al click: en pantallas táctiles el click
+   se perdía si el dedo se movía un poco o la pulsación era corta (Ser Salud, 12-nov). */
+let ultimaTecla = 0;
+$('#teclado').addEventListener('pointerdown', e => {
   const b = e.target.closest('.tecla'); if (!b) return;
+  e.preventDefault(); ultimaTecla = Date.now();
+  b.classList.add('pulsada'); setTimeout(() => b.classList.remove('pulsada'), 120);
   pulsarTecla(b.dataset.k);
 });
+$('#teclado').addEventListener('click', e => {
+  const b = e.target.closest('.tecla'); if (!b) return;
+  if (Date.now() - ultimaTecla < 600) return;   // ya se procesó en pointerdown
+  pulsarTecla(b.dataset.k);
+});
+$('#teclado').addEventListener('contextmenu', e => e.preventDefault());
 /* Teclado físico (para probar en computadora; en el tótem no interviene) */
 document.addEventListener('keydown', e => {
   if (pantalla !== 'registro' || !campoAct || $('#admin').classList.contains('on')) return;
@@ -845,12 +885,14 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Backspace') k = 'BORRAR';
   else if (e.key === 'Enter' || e.key === 'Tab') k = 'SIG';
   else if (e.key === ' ') k = 'ESPACIO';
+  else if (e.key === 'ArrowLeft') k = 'IZQ';
+  else if (e.key === 'ArrowRight') k = 'DER';
   else if (e.key.length === 1) k = e.key;
   if (!k) return;
   e.preventDefault();
   if (k.length === 1 && campoAct !== 'telefono' && campoAct !== 'correo'){
     // letra con acento o mayúscula escrita directamente: respetar tal cual
-    if (/[áéíóúÁÉÍÓÚüÜ]/.test(k)){ let v = form[campoAct]; if (v.length < 60){ form[campoAct] = v + k; } pintarRegistro(); return; }
+    if (/[áéíóúÁÉÍÓÚüÜ]/.test(k)){ let v = form[campoAct]; if (v.length < 60){ form[campoAct] = v.slice(0,caret) + k + v.slice(caret); caret++; } pintarRegistro(); return; }
     k = k.toUpperCase();
   }
   if (campoAct === 'telefono' && !/^\d$/.test(k) && k !== 'BORRAR' && k !== 'SIG') return;
@@ -862,29 +904,33 @@ function pulsarTecla(k){
   if (k === 'SIG'){
     const camposPaso = PASOS[paso].campos;
     const i = camposPaso.indexOf(f);
-    if (i < camposPaso.length - 1){ campoAct = camposPaso[i+1]; tilde = false; }
+    if (i < camposPaso.length - 1){ campoAct = camposPaso[i+1]; tilde = false; caretFin(); }
     else { campoAct = null; }
     pintarRegistro(); pintarTeclado();
     return;
   }
   if (k === 'TILDE'){ tilde = !tilde; pintarTeclado(); return; }
+  caret = Math.max(0, Math.min(caret, v.length));
+  if (k === 'IZQ'){ if (f === 'telefono') return; caret = Math.max(0, caret - 1); pintarRegistro(); return; }
+  if (k === 'DER'){ if (f === 'telefono') return; caret = Math.min(v.length, caret + 1); pintarRegistro(); return; }
+  const antes = v.slice(0, caret), despues = v.slice(caret);
   if (k === 'BORRAR'){
-    if (f === 'telefono') v = fmtTel(v.replace(/\D/g,'').slice(0,-1));
-    else v = v.slice(0,-1);
+    if (f === 'telefono'){ v = fmtTel(v.replace(/\D/g,'').slice(0,-1)); caret = v.length; }
+    else if (caret > 0){ v = antes.slice(0,-1) + despues; caret--; }
   } else if (k === 'ESPACIO'){
-    if (v && !v.endsWith(' ') && v.length < 60) v += ' ';
+    if (antes && !antes.endsWith(' ') && !despues.startsWith(' ') && v.length < 60){ v = antes + ' ' + despues; caret++; }
   } else if (f === 'telefono'){
-    const d = v.replace(/\D/g,''); if (d.length >= 10) return; v = fmtTel(d + k);
+    const d = v.replace(/\D/g,''); if (d.length >= 10) return; v = fmtTel(d + k); caret = v.length;
   } else if (f === 'correo'){
     if (k.startsWith('@') && v.includes('@')) return;
-    if ((v + k).length <= 70) v += k.toLowerCase();
+    if ((v + k).length <= 70){ v = antes + k.toLowerCase() + despues; caret += k.length; }
   } else {
     let c = k;
     if (tilde && ACENTOS[c]){ c = ACENTOS[c]; }
     tilde = false;
-    const inicioPal = !v || v.endsWith(' ') || v.endsWith('-');
+    const inicioPal = !antes || antes.endsWith(' ') || antes.endsWith('-');
     c = inicioPal ? c.toUpperCase() : c.toLowerCase();
-    if (v.length < 60) v += c;
+    if (v.length < 60){ v = antes + c + despues; caret++; }
     if ($('#teclado .tecla.on')) pintarTeclado();
   }
   form[f] = v;
