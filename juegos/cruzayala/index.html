@@ -180,6 +180,45 @@ html,body{width:100%;height:100%;min-height:0;overflow:hidden;overscroll-behavio
   transform:translate(-50%,-50%);transform-origin:center center;}
 img{-webkit-user-drag:none;pointer-events:none;}
 button{touch-action:manipulation;}
+/* ── PANTALLA DE PREGUNTAS A TODO EL ALTO (Digital Sign RD) ── */
+#sg.show{height:1920px;padding:0 0 64px;justify-content:space-between;}
+#sg .gh,#sg .scorebar,#sg .prog,#sg .tarea,#sg .qcard,#sg .opts,#sg .fb,#sg .btnn{margin-bottom:0;flex-shrink:0;}
+.gh{padding:52px 64px 34px;}
+#sg .logo-sm{height:76px;}
+.gtt{font-size:38px;letter-spacing:6px;}
+.gsb{font-size:17px;letter-spacing:5px;}
+.scorebar{gap:22px;}
+.sc{border-radius:22px;padding:24px 12px;gap:6px;}
+.slb{font-size:17px;letter-spacing:4px;}
+.svl{font-size:68px;}
+.plb{font-size:17px;letter-spacing:4px;}
+.pc{font-size:36px;}
+.pm{margin-bottom:10px;}
+.pt{height:14px;border-radius:8px;}
+.tarea{gap:18px;}
+.ti{font-size:36px;}
+.tt{height:18px;border-radius:9px;}
+.tf{border-radius:9px;}
+.tn{font-size:52px;min-width:66px;}
+.qcard{border-radius:34px;padding:66px 56px 46px;min-height:330px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+.qbadge{top:-25px;left:56px;font-size:18px;letter-spacing:3px;padding:11px 30px;border-radius:20px;}
+.cattag{font-size:19px;letter-spacing:3px;padding:8px 22px;margin-bottom:22px;border-radius:24px;}
+.qtxt{font-size:42px;line-height:1.4;}
+.opts{display:flex;flex-direction:column;gap:20px;}
+.ob{border-radius:26px;padding:26px 34px;gap:26px;min-height:126px;}
+.ol{width:64px;height:64px;min-width:64px;font-size:38px;border-radius:16px;}
+.ot{font-size:32px;line-height:1.3;}
+.fb{display:flex;align-items:center;border-radius:26px;padding:28px 40px;gap:26px;min-height:232px;animation:none;
+  background:rgba(255,255,255,.035);border:1.5px dashed rgba(255,255,255,.16);}
+.fb.show{animation:su .3s ease forwards;border-style:solid;}
+.fb:not(.show) .fbt{color:rgba(255,255,255,.55);}
+.fb:not(.show) .fbd{color:rgba(255,255,255,.4);}
+.fb:not(.show) .fbi{opacity:.75;}
+.fbi{font-size:60px;}
+.fbt{font-size:38px;letter-spacing:4px;margin-bottom:8px;}
+.fbd{font-size:25px;line-height:1.5;}
+.btnn{display:block;font-size:36px;letter-spacing:6px;padding:30px 0;opacity:.28;pointer-events:none;box-shadow:none;}
+.btnn.show{opacity:1;pointer-events:auto;box-shadow:0 6px 22px rgba(30,77,130,.5);}
 </style>
 </head>
 <body>
@@ -2177,6 +2216,15 @@ function restartGame(){
   var _sr=showResult;showResult=function(){_sr();armar();};
   armar();
   window.__kiosco={alInicio:alInicio};
+})();
+/* Pantalla llena: mientras no se responde, el espacio de la explicación muestra la instrucción */
+(function(){
+  var _l=loadQ;
+  loadQ=function(){_l();
+    document.getElementById('fb-i').textContent='👆';
+    document.getElementById('fb-t').textContent='Elige tu respuesta';
+    document.getElementById('fb-d').textContent='Tienes 20 segundos. Mientras más rápido respondas, más puntos ganas.';
+  };
 })();
 </script>
 </body>
