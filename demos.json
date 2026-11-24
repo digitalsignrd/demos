@@ -8,5 +8,15 @@
     "clave": "COPARDOM",
     "color": "#2B5535",
     "fecha": "2026-11"
+  },
+  {
+    "slug": "cruzayala",
+    "cliente": "Cruz Ayala",
+    "titulo": "Trivia Análisis Clínico",
+    "evento": "Diagnóstico Clínico",
+    "descripcion": "Trivia de 5 preguntas con 20 segundos por pregunta, puntos por rapidez y resultado de 1 a 5 estrellas.",
+    "clave": "CRUZAYALA",
+    "color": "#1E4D82",
+    "fecha": "2026-11"
   }
 ]

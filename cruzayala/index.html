@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0B0F10">
+<meta name="robots" content="noindex">
+<title>Cruz Ayala · Demo · Digital Sign RD</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0B0F10;color:#E8ECEA;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;overflow:hidden}
+a{color:inherit;text-decoration:none}
+#escena{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px 18px}
+/* Tótem */
+.totem{position:relative;height:min(calc(100vh - 110px), 1100px);aspect-ratio:9/16;background:#0A0A0A;border-radius:18px;padding:12px;box-shadow:0 0 0 1px #2a2f2d,0 40px 100px rgba(0,0,0,.75),inset 0 0 0 1px #000}
+.totem iframe{width:100%;height:100%;border:0;border-radius:8px;background:#F3F8F4;display:block}
+.base{width:34%;height:14px;background:linear-gradient(#141817,#0A0A0A);border-radius:0 0 10px 10px;box-shadow:0 0 0 1px #2a2f2d}
+.pie{width:52%;height:6px;background:#0d100f;border-radius:4px;margin-top:2px;box-shadow:0 0 0 1px #22272593}
+/* Marca */
+#marca{position:fixed;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6B766F}
+#marca b{color:#C9D1CC;font-weight:600}
+#marca a:hover{color:#E8ECEA}
+#acciones{position:fixed;top:14px;right:16px;display:flex;gap:8px}
+#acciones a,#acciones button{font:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9AA59E;background:transparent;border:1px solid #242927;border-radius:999px;padding:8px 14px;cursor:pointer}
+#acciones a:hover,#acciones button:hover{color:#E8ECEA;border-color:#3a4441}
+/* Gate */
+#gate{position:fixed;inset:0;background:#0B0F10;display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
+#gate.on{display:flex}
+#gate form{max-width:340px;width:100%;text-align:center}
+#gate .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6B766F;margin-bottom:28px}
+#gate .k b{color:#C9D1CC;font-weight:600}
+#gate h2{margin:0 0 6px;font-size:22px;font-weight:600}
+#gate p{color:#8A958E;margin:0 0 22px;font-size:14px}
+#gate input{width:100%;padding:14px;border-radius:12px;border:1px solid #242927;background:#0F1514;color:#E8ECEA;font-size:18px;letter-spacing:.2em;text-align:center;text-transform:uppercase;margin-bottom:12px;outline:none}
+#gate input:focus{border-color:#4a5753}
+#gate .err{color:#F28B82;font-size:13px;min-height:18px;margin-bottom:8px}
+#gate button{width:100%;padding:14px;border-radius:12px;border:0;background:#E8ECEA;color:#0B0F10;font-weight:600;font-size:15px;cursor:pointer}
+/* Celular: juego directo a pantalla completa */
+@media (max-width:700px){
+  #escena{padding:0}
+  .totem{height:100%;width:100%;aspect-ratio:auto;border-radius:0;padding:0;box-shadow:none}
+  .totem iframe{border-radius:0}
+  .base,.pie,#marca{display:none}
+  #acciones{top:auto;bottom:10px;right:10px}
+}
+</style>
+</head>
+<body>
+<div id="escena">
+  <div class="totem"><iframe id="juego" title="Trivia Análisis Clínico"></iframe></div>
+  <div class="base"></div><div class="pie"></div>
+</div>
+<div id="acciones">
+  <button id="reiniciar" type="button">Reiniciar</button>
+  <a href="../juegos/cruzayala/" target="_blank" rel="noopener">Pantalla completa ↗</a>
+</div>
+<div id="marca"><a href="../"><b>Digital Sign RD</b></a><span>Demo · Cruz Ayala</span></div>
+
+<div id="gate">
+  <form id="gateForm">
+    <div class="k"><b>Digital Sign RD</b> · Demo</div>
+    <h2>Cruz Ayala</h2>
+    <p>Ingrese la clave de acceso que le compartimos.</p>
+    <input id="clave" placeholder="CLAVE" autocomplete="off" autofocus>
+    <div class="err" id="gateErr"></div>
+    <button type="submit">Entrar</button>
+  </form>
+</div>
+
+<script>
+(function(){
+  var CLAVE = "CRUZAYALA"; // vacío = sin clave
+  var SRC = "../juegos/cruzayala/";
+  var fr = document.getElementById('juego');
+  function cargar(){ fr.src = SRC + '?t=' + Date.now(); }
+  function ok(){ try{ return !CLAVE || localStorage.getItem('demo_cruzayala') === '1'; }catch(e){ return !CLAVE; } }
+  if (ok()) cargar(); else document.getElementById('gate').classList.add('on');
+  document.getElementById('gateForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = document.getElementById('clave').value.trim().toUpperCase();
+    if (v === CLAVE.toUpperCase()){
+      try{ localStorage.setItem('demo_cruzayala','1'); }catch(err){}
+      document.getElementById('gate').classList.remove('on'); cargar();
+    } else { document.getElementById('gateErr').textContent = 'Clave incorrecta.'; }
+  });
+  document.getElementById('reiniciar').addEventListener('click', cargar);
+})();
+</script>
+</body>
+</html>
